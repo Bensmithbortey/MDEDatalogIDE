@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.mde.Dlg
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.mde.Dlg
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.mde.Dlg; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.xtext.mde.services,
+ org.xtext.mde.parser.antlr,
+ org.xtext.mde.parser.antlr.internal,
+ org.xtext.mde.generator,
+ org.xtext.mde.datalog.util,
+ org.xtext.mde,
+ org.xtext.mde.datalog,
+ org.xtext.mde.validation,
+ org.xtext.mde.scoping,
+ org.xtext.mde.datalog.impl,
+ org.xtext.mde.serializer
+Import-Package: org.apache.log4j

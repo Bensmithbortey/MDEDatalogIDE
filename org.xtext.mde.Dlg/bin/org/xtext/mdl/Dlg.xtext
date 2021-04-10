@@ -1,0 +1,66 @@
+grammar org.xtext.mde.Datalog with org.eclipse.xtext.common.Terminals
+
+generate datalog "http://www.xtext.org/mde/Datalog"
+
+Model:
+	Program += Statements*;
+
+Statements:
+	{Statements} Plus  | {Statements} Minus | Form | Param | Ask
+;
+
+Plus:
+	'+'
+;
+
+Minus:
+	'-'
+;
+
+Ask:
+	Formula '?'
+;
+
+Form:
+	Atom ({Operation.left=current} ':-' right=Formula)* '.'
+;
+
+Param:
+	Formula '.'
+;
+
+Formula:
+	Atom ({Formula.left=current} ',' right=Atom)*
+;
+
+Atom:
+	ParameterPred '(' list = ParamList ')'
+;
+
+ParamList returns Par:
+	Primary ({ParamList.left=current} ',' right=Primary)
+;
+
+Primary returns Par:
+	ParameterPred | ParameterVar | ParameterInt
+; 
+
+ParameterInt:
+	int = INT
+;
+
+ParameterVar:
+	up = VARIABLE
+;
+
+ParameterPred:
+	low = PREDICATE
+;
+
+terminal PREDICATE:
+	('a'..'z')(('a'..'z')|('0'..'9')|('A'..'Z')|('_'))*
+;
+
+terminal VARIABLE:
+	('A'..'Z')(('A'..'Z')|('a'..'z')|('0'..'9')|('_'))*
+;
