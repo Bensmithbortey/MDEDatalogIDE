@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.xtext.mde.datalog.Atom;
 import org.xtext.mde.datalog.DatalogPackage;
 import org.xtext.mde.datalog.Formula;
 
@@ -29,7 +28,7 @@ import org.xtext.mde.datalog.Formula;
  *
  * @generated
  */
-public class FormulaImpl extends AskImpl implements Formula
+public class FormulaImpl extends AssertionImpl implements Formula
 {
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -49,7 +48,7 @@ public class FormulaImpl extends AskImpl implements Formula
    * @generated
    * @ordered
    */
-  protected Atom right;
+  protected Formula right;
 
   /**
    * <!-- begin-user-doc -->
@@ -128,7 +127,7 @@ public class FormulaImpl extends AskImpl implements Formula
    * @generated
    */
   @Override
-  public Atom getRight()
+  public Formula getRight()
   {
     return right;
   }
@@ -138,9 +137,9 @@ public class FormulaImpl extends AskImpl implements Formula
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRight(Atom newRight, NotificationChain msgs)
+  public NotificationChain basicSetRight(Formula newRight, NotificationChain msgs)
   {
-    Atom oldRight = right;
+    Formula oldRight = right;
     right = newRight;
     if (eNotificationRequired())
     {
@@ -156,7 +155,7 @@ public class FormulaImpl extends AskImpl implements Formula
    * @generated
    */
   @Override
-  public void setRight(Atom newRight)
+  public void setRight(Formula newRight)
   {
     if (newRight != right)
     {
@@ -222,7 +221,7 @@ public class FormulaImpl extends AskImpl implements Formula
         setLeft((Formula)newValue);
         return;
       case DatalogPackage.FORMULA__RIGHT:
-        setRight((Atom)newValue);
+        setRight((Formula)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -242,7 +241,7 @@ public class FormulaImpl extends AskImpl implements Formula
         setLeft((Formula)null);
         return;
       case DatalogPackage.FORMULA__RIGHT:
-        setRight((Atom)null);
+        setRight((Formula)null);
         return;
     }
     super.eUnset(featureID);

@@ -86,9 +86,9 @@ public class DatalogAdapterFactory extends AdapterFactoryImpl
         return createStatementsAdapter();
       }
       @Override
-      public Adapter caseAsk(Ask object)
+      public Adapter caseComment(Comment object)
       {
-        return createAskAdapter();
+        return createCommentAdapter();
       }
       @Override
       public Adapter caseForm(Form object)
@@ -96,9 +96,9 @@ public class DatalogAdapterFactory extends AdapterFactoryImpl
         return createFormAdapter();
       }
       @Override
-      public Adapter caseParam(Param object)
+      public Adapter caseAssertion(Assertion object)
       {
-        return createParamAdapter();
+        return createAssertionAdapter();
       }
       @Override
       public Adapter caseFormula(Formula object)
@@ -129,11 +129,6 @@ public class DatalogAdapterFactory extends AdapterFactoryImpl
       public Adapter caseParameterPred(ParameterPred object)
       {
         return createParameterPredAdapter();
-      }
-      @Override
-      public Adapter caseOperation(Operation object)
-      {
-        return createOperationAdapter();
       }
       @Override
       public Adapter caseParamList(ParamList object)
@@ -193,16 +188,16 @@ public class DatalogAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mde.datalog.Ask <em>Ask</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.mde.datalog.Comment <em>Comment</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.mde.datalog.Ask
+   * @see org.xtext.mde.datalog.Comment
    * @generated
    */
-  public Adapter createAskAdapter()
+  public Adapter createCommentAdapter()
   {
     return null;
   }
@@ -223,16 +218,16 @@ public class DatalogAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mde.datalog.Param <em>Param</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.mde.datalog.Assertion <em>Assertion</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.mde.datalog.Param
+   * @see org.xtext.mde.datalog.Assertion
    * @generated
    */
-  public Adapter createParamAdapter()
+  public Adapter createAssertionAdapter()
   {
     return null;
   }
@@ -323,21 +318,6 @@ public class DatalogAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createParameterPredAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mde.datalog.Operation <em>Operation</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.mde.datalog.Operation
-   * @generated
-   */
-  public Adapter createOperationAdapter()
   {
     return null;
   }

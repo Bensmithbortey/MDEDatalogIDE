@@ -105,23 +105,32 @@ public interface DatalogPackage extends EPackage
   int STATEMENTS_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link org.xtext.mde.datalog.impl.AskImpl <em>Ask</em>}' class.
+   * The meta object id for the '{@link org.xtext.mde.datalog.impl.CommentImpl <em>Comment</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.mde.datalog.impl.AskImpl
-   * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getAsk()
+   * @see org.xtext.mde.datalog.impl.CommentImpl
+   * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getComment()
    * @generated
    */
-  int ASK = 2;
+  int COMMENT = 2;
 
   /**
-   * The number of structural features of the '<em>Ask</em>' class.
+   * The feature id for the '<em><b>Text</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ASK_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 0;
+  int COMMENT__TEXT = STATEMENTS_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Comment</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMENT_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xtext.mde.datalog.impl.FormImpl <em>Form</em>}' class.
@@ -143,23 +152,23 @@ public interface DatalogPackage extends EPackage
   int FORM_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.xtext.mde.datalog.impl.ParamImpl <em>Param</em>}' class.
+   * The meta object id for the '{@link org.xtext.mde.datalog.impl.AssertionImpl <em>Assertion</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.mde.datalog.impl.ParamImpl
-   * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getParam()
+   * @see org.xtext.mde.datalog.impl.AssertionImpl
+   * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getAssertion()
    * @generated
    */
-  int PARAM = 4;
+  int ASSERTION = 4;
 
   /**
-   * The number of structural features of the '<em>Param</em>' class.
+   * The number of structural features of the '<em>Assertion</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAM_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 0;
+  int ASSERTION_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.xtext.mde.datalog.impl.FormulaImpl <em>Formula</em>}' class.
@@ -178,7 +187,7 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORMULA__LEFT = ASK_FEATURE_COUNT + 0;
+  int FORMULA__LEFT = ASSERTION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -187,7 +196,7 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORMULA__RIGHT = ASK_FEATURE_COUNT + 1;
+  int FORMULA__RIGHT = ASSERTION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Formula</em>' class.
@@ -196,7 +205,7 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORMULA_FEATURE_COUNT = ASK_FEATURE_COUNT + 2;
+  int FORMULA_FEATURE_COUNT = ASSERTION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.mde.datalog.impl.AtomImpl <em>Atom</em>}' class.
@@ -366,43 +375,6 @@ public interface DatalogPackage extends EPackage
   int PARAMETER_PRED_FEATURE_COUNT = ATOM_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.xtext.mde.datalog.impl.OperationImpl <em>Operation</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.mde.datalog.impl.OperationImpl
-   * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getOperation()
-   * @generated
-   */
-  int OPERATION = 11;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION__LEFT = FORM_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION__RIGHT = FORM_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Operation</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION_FEATURE_COUNT = FORM_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link org.xtext.mde.datalog.impl.ParamListImpl <em>Param List</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -410,7 +382,7 @@ public interface DatalogPackage extends EPackage
    * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getParamList()
    * @generated
    */
-  int PARAM_LIST = 12;
+  int PARAM_LIST = 11;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -472,14 +444,25 @@ public interface DatalogPackage extends EPackage
   EClass getStatements();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.mde.datalog.Ask <em>Ask</em>}'.
+   * Returns the meta object for class '{@link org.xtext.mde.datalog.Comment <em>Comment</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Ask</em>'.
-   * @see org.xtext.mde.datalog.Ask
+   * @return the meta object for class '<em>Comment</em>'.
+   * @see org.xtext.mde.datalog.Comment
    * @generated
    */
-  EClass getAsk();
+  EClass getComment();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.mde.datalog.Comment#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Text</em>'.
+   * @see org.xtext.mde.datalog.Comment#getText()
+   * @see #getComment()
+   * @generated
+   */
+  EAttribute getComment_Text();
 
   /**
    * Returns the meta object for class '{@link org.xtext.mde.datalog.Form <em>Form</em>}'.
@@ -492,14 +475,14 @@ public interface DatalogPackage extends EPackage
   EClass getForm();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.mde.datalog.Param <em>Param</em>}'.
+   * Returns the meta object for class '{@link org.xtext.mde.datalog.Assertion <em>Assertion</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Param</em>'.
-   * @see org.xtext.mde.datalog.Param
+   * @return the meta object for class '<em>Assertion</em>'.
+   * @see org.xtext.mde.datalog.Assertion
    * @generated
    */
-  EClass getParam();
+  EClass getAssertion();
 
   /**
    * Returns the meta object for class '{@link org.xtext.mde.datalog.Formula <em>Formula</em>}'.
@@ -628,38 +611,6 @@ public interface DatalogPackage extends EPackage
   EAttribute getParameterPred_Low();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.mde.datalog.Operation <em>Operation</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Operation</em>'.
-   * @see org.xtext.mde.datalog.Operation
-   * @generated
-   */
-  EClass getOperation();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.mde.datalog.Operation#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.xtext.mde.datalog.Operation#getLeft()
-   * @see #getOperation()
-   * @generated
-   */
-  EReference getOperation_Left();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.mde.datalog.Operation#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see org.xtext.mde.datalog.Operation#getRight()
-   * @see #getOperation()
-   * @generated
-   */
-  EReference getOperation_Right();
-
-  /**
    * Returns the meta object for class '{@link org.xtext.mde.datalog.ParamList <em>Param List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -743,14 +694,22 @@ public interface DatalogPackage extends EPackage
     EClass STATEMENTS = eINSTANCE.getStatements();
 
     /**
-     * The meta object literal for the '{@link org.xtext.mde.datalog.impl.AskImpl <em>Ask</em>}' class.
+     * The meta object literal for the '{@link org.xtext.mde.datalog.impl.CommentImpl <em>Comment</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.mde.datalog.impl.AskImpl
-     * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getAsk()
+     * @see org.xtext.mde.datalog.impl.CommentImpl
+     * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getComment()
      * @generated
      */
-    EClass ASK = eINSTANCE.getAsk();
+    EClass COMMENT = eINSTANCE.getComment();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMENT__TEXT = eINSTANCE.getComment_Text();
 
     /**
      * The meta object literal for the '{@link org.xtext.mde.datalog.impl.FormImpl <em>Form</em>}' class.
@@ -763,14 +722,14 @@ public interface DatalogPackage extends EPackage
     EClass FORM = eINSTANCE.getForm();
 
     /**
-     * The meta object literal for the '{@link org.xtext.mde.datalog.impl.ParamImpl <em>Param</em>}' class.
+     * The meta object literal for the '{@link org.xtext.mde.datalog.impl.AssertionImpl <em>Assertion</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.mde.datalog.impl.ParamImpl
-     * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getParam()
+     * @see org.xtext.mde.datalog.impl.AssertionImpl
+     * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getAssertion()
      * @generated
      */
-    EClass PARAM = eINSTANCE.getParam();
+    EClass ASSERTION = eINSTANCE.getAssertion();
 
     /**
      * The meta object literal for the '{@link org.xtext.mde.datalog.impl.FormulaImpl <em>Formula</em>}' class.
@@ -879,32 +838,6 @@ public interface DatalogPackage extends EPackage
      * @generated
      */
     EAttribute PARAMETER_PRED__LOW = eINSTANCE.getParameterPred_Low();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.mde.datalog.impl.OperationImpl <em>Operation</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.mde.datalog.impl.OperationImpl
-     * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getOperation()
-     * @generated
-     */
-    EClass OPERATION = eINSTANCE.getOperation();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPERATION__LEFT = eINSTANCE.getOperation_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPERATION__RIGHT = eINSTANCE.getOperation_Right();
 
     /**
      * The meta object literal for the '{@link org.xtext.mde.datalog.impl.ParamListImpl <em>Param List</em>}' class.

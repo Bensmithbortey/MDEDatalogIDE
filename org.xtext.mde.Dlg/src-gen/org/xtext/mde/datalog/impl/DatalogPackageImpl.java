@@ -10,16 +10,15 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.xtext.mde.datalog.Ask;
+import org.xtext.mde.datalog.Assertion;
 import org.xtext.mde.datalog.Atom;
+import org.xtext.mde.datalog.Comment;
 import org.xtext.mde.datalog.DatalogFactory;
 import org.xtext.mde.datalog.DatalogPackage;
 import org.xtext.mde.datalog.Form;
 import org.xtext.mde.datalog.Formula;
 import org.xtext.mde.datalog.Model;
-import org.xtext.mde.datalog.Operation;
 import org.xtext.mde.datalog.Par;
-import org.xtext.mde.datalog.Param;
 import org.xtext.mde.datalog.ParamList;
 import org.xtext.mde.datalog.ParameterInt;
 import org.xtext.mde.datalog.ParameterPred;
@@ -53,7 +52,7 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass askEClass = null;
+  private EClass commentEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,7 +66,7 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass paramEClass = null;
+  private EClass assertionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -110,13 +109,6 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
    * @generated
    */
   private EClass parameterPredEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass operationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -227,9 +219,20 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
    * @generated
    */
   @Override
-  public EClass getAsk()
+  public EClass getComment()
   {
-    return askEClass;
+    return commentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getComment_Text()
+  {
+    return (EAttribute)commentEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -249,9 +252,9 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
    * @generated
    */
   @Override
-  public EClass getParam()
+  public EClass getAssertion()
   {
-    return paramEClass;
+    return assertionEClass;
   }
 
   /**
@@ -392,39 +395,6 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
    * @generated
    */
   @Override
-  public EClass getOperation()
-  {
-    return operationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getOperation_Left()
-  {
-    return (EReference)operationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getOperation_Right()
-  {
-    return (EReference)operationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getParamList()
   {
     return paramListEClass;
@@ -488,11 +458,12 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
 
     statementsEClass = createEClass(STATEMENTS);
 
-    askEClass = createEClass(ASK);
+    commentEClass = createEClass(COMMENT);
+    createEAttribute(commentEClass, COMMENT__TEXT);
 
     formEClass = createEClass(FORM);
 
-    paramEClass = createEClass(PARAM);
+    assertionEClass = createEClass(ASSERTION);
 
     formulaEClass = createEClass(FORMULA);
     createEReference(formulaEClass, FORMULA__LEFT);
@@ -511,10 +482,6 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
     parameterPredEClass = createEClass(PARAMETER_PRED);
     createEReference(parameterPredEClass, PARAMETER_PRED__LIST);
     createEAttribute(parameterPredEClass, PARAMETER_PRED__LOW);
-
-    operationEClass = createEClass(OPERATION);
-    createEReference(operationEClass, OPERATION__LEFT);
-    createEReference(operationEClass, OPERATION__RIGHT);
 
     paramListEClass = createEClass(PARAM_LIST);
     createEReference(paramListEClass, PARAM_LIST__LEFT);
@@ -550,18 +517,16 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    askEClass.getESuperTypes().add(this.getStatements());
+    commentEClass.getESuperTypes().add(this.getStatements());
     formEClass.getESuperTypes().add(this.getStatements());
-    paramEClass.getESuperTypes().add(this.getStatements());
-    formulaEClass.getESuperTypes().add(this.getAsk());
-    formulaEClass.getESuperTypes().add(this.getParam());
+    assertionEClass.getESuperTypes().add(this.getStatements());
+    formulaEClass.getESuperTypes().add(this.getAssertion());
     atomEClass.getESuperTypes().add(this.getForm());
     atomEClass.getESuperTypes().add(this.getFormula());
     parameterIntEClass.getESuperTypes().add(this.getPar());
     parameterVarEClass.getESuperTypes().add(this.getPar());
     parameterPredEClass.getESuperTypes().add(this.getAtom());
     parameterPredEClass.getESuperTypes().add(this.getPar());
-    operationEClass.getESuperTypes().add(this.getForm());
     paramListEClass.getESuperTypes().add(this.getPar());
 
     // Initialize classes and features; add operations and parameters
@@ -570,15 +535,16 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
 
     initEClass(statementsEClass, Statements.class, "Statements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(askEClass, Ask.class, "Ask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(commentEClass, Comment.class, "Comment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getComment_Text(), ecorePackage.getEString(), "text", null, 0, 1, Comment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(formEClass, Form.class, "Form", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(paramEClass, Param.class, "Param", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(assertionEClass, Assertion.class, "Assertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(formulaEClass, Formula.class, "Formula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFormula_Left(), this.getFormula(), null, "left", null, 0, 1, Formula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFormula_Right(), this.getAtom(), null, "right", null, 0, 1, Formula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFormula_Right(), this.getFormula(), null, "right", null, 0, 1, Formula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(atomEClass, Atom.class, "Atom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -593,10 +559,6 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
     initEClass(parameterPredEClass, ParameterPred.class, "ParameterPred", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getParameterPred_List(), this.getPar(), null, "list", null, 0, 1, ParameterPred.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getParameterPred_Low(), ecorePackage.getEString(), "low", null, 0, 1, ParameterPred.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOperation_Left(), this.getForm(), null, "left", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperation_Right(), this.getFormula(), null, "right", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(paramListEClass, ParamList.class, "ParamList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getParamList_Left(), this.getPar(), null, "left", null, 0, 1, ParamList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -5,24 +5,24 @@ package org.xtext.mde.datalog.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.xtext.mde.datalog.Ask;
+import org.xtext.mde.datalog.Assertion;
 import org.xtext.mde.datalog.DatalogPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ask</b></em>'.
+ * An implementation of the model object '<em><b>Assertion</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class AskImpl extends StatementsImpl implements Ask
+public class AssertionImpl extends StatementsImpl implements Assertion
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AskImpl()
+  protected AssertionImpl()
   {
     super();
   }
@@ -35,7 +35,7 @@ public class AskImpl extends StatementsImpl implements Ask
   @Override
   protected EClass eStaticClass()
   {
-    return DatalogPackage.Literals.ASK;
+    return DatalogPackage.Literals.ASSERTION;
   }
 
-} //AskImpl
+} //AssertionImpl

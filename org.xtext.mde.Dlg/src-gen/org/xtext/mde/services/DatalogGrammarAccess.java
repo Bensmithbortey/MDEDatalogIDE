@@ -48,14 +48,14 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Action cStatementsAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final RuleCall cMinusParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		private final RuleCall cFormParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cParamParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cAskParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cAssertionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cCommentParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//Statements:
-		//	{Statements} Plus | {Statements} Minus | Form | Param | Ask;
+		//	{Statements} Plus | {Statements} Minus | Form | Assertion | Comment;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Statements} Plus | {Statements} Minus | Form | Param | Ask
+		//{Statements} Plus | {Statements} Minus | Form | Assertion | Comment
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{Statements} Plus
@@ -79,11 +79,11 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//Form
 		public RuleCall getFormParserRuleCall_2() { return cFormParserRuleCall_2; }
 		
-		//Param
-		public RuleCall getParamParserRuleCall_3() { return cParamParserRuleCall_3; }
+		//Assertion
+		public RuleCall getAssertionParserRuleCall_3() { return cAssertionParserRuleCall_3; }
 		
-		//Ask
-		public RuleCall getAskParserRuleCall_4() { return cAskParserRuleCall_4; }
+		//Comment
+		public RuleCall getCommentParserRuleCall_4() { return cCommentParserRuleCall_4; }
 	}
 	public class PlusElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Plus");
@@ -107,71 +107,71 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'-'
 		public Keyword getHyphenMinusKeyword() { return cHyphenMinusKeyword; }
 	}
-	public class AskElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Ask");
+	public class CommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Comment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cFormulaParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Keyword cQuestionMarkKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cSolidusAsteriskKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTextAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTextIDTerminalRuleCall_1_0 = (RuleCall)cTextAssignment_1.eContents().get(0);
+		private final Keyword cAsteriskSolidusKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//Ask:
-		//	Formula '?';
+		//Comment:
+		//	'/*' text=ID '*/';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Formula '?'
+		//'/*' text=ID '*/'
 		public Group getGroup() { return cGroup; }
 		
-		//Formula
-		public RuleCall getFormulaParserRuleCall_0() { return cFormulaParserRuleCall_0; }
+		//'/*'
+		public Keyword getSolidusAsteriskKeyword_0() { return cSolidusAsteriskKeyword_0; }
 		
-		//'?'
-		public Keyword getQuestionMarkKeyword_1() { return cQuestionMarkKeyword_1; }
+		//text=ID
+		public Assignment getTextAssignment_1() { return cTextAssignment_1; }
+		
+		//ID
+		public RuleCall getTextIDTerminalRuleCall_1_0() { return cTextIDTerminalRuleCall_1_0; }
+		
+		//'*/'
+		public Keyword getAsteriskSolidusKeyword_2() { return cAsteriskSolidusKeyword_2; }
 	}
 	public class FormElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Form");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cAtomParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cOperationLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cColonHyphenMinusKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightFormulaParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
-		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cColonHyphenMinusKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cRightAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cRightFormulaParserRuleCall_2_0 = (RuleCall)cRightAssignment_2.eContents().get(0);
+		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Form:
-		//	Atom ({Operation.left=current} ':-' right=Formula)* '.';
+		//	Atom ':-' right=Formula '.';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Atom ({Operation.left=current} ':-' right=Formula)* '.'
+		//Atom ':-' right=Formula '.'
 		public Group getGroup() { return cGroup; }
 		
 		//Atom
 		public RuleCall getAtomParserRuleCall_0() { return cAtomParserRuleCall_0; }
 		
-		//({Operation.left=current} ':-' right=Formula)*
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//{Operation.left=current}
-		public Action getOperationLeftAction_1_0() { return cOperationLeftAction_1_0; }
-		
 		//':-'
-		public Keyword getColonHyphenMinusKeyword_1_1() { return cColonHyphenMinusKeyword_1_1; }
+		public Keyword getColonHyphenMinusKeyword_1() { return cColonHyphenMinusKeyword_1; }
 		
 		//right=Formula
-		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		public Assignment getRightAssignment_2() { return cRightAssignment_2; }
 		
 		//Formula
-		public RuleCall getRightFormulaParserRuleCall_1_2_0() { return cRightFormulaParserRuleCall_1_2_0; }
+		public RuleCall getRightFormulaParserRuleCall_2_0() { return cRightFormulaParserRuleCall_2_0; }
 		
 		//'.'
-		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
+		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
 	}
-	public class ParamElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Param");
+	public class AssertionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Assertion");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cFormulaParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
-		//Param:
+		//Assertion:
 		//	Formula '.';
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -261,16 +261,16 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final RuleCall cRightPrimaryParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//ParamList Par:
-		//	Primary ({ParamList.left=current} ',' right=Primary);
+		//	Primary ({ParamList.left=current} ',' right=Primary)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Primary ({ParamList.left=current} ',' right=Primary)
+		//Primary ({ParamList.left=current} ',' right=Primary)*
 		public Group getGroup() { return cGroup; }
 		
 		//Primary
 		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
 		
-		//({ParamList.left=current} ',' right=Primary)
+		//({ParamList.left=current} ',' right=Primary)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{ParamList.left=current}
@@ -359,9 +359,9 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	private final StatementsElements pStatements;
 	private final PlusElements pPlus;
 	private final MinusElements pMinus;
-	private final AskElements pAsk;
+	private final CommentElements pComment;
 	private final FormElements pForm;
-	private final ParamElements pParam;
+	private final AssertionElements pAssertion;
 	private final FormulaElements pFormula;
 	private final AtomElements pAtom;
 	private final ParamListElements pParamList;
@@ -385,9 +385,9 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		this.pStatements = new StatementsElements();
 		this.pPlus = new PlusElements();
 		this.pMinus = new MinusElements();
-		this.pAsk = new AskElements();
+		this.pComment = new CommentElements();
 		this.pForm = new FormElements();
-		this.pParam = new ParamElements();
+		this.pAssertion = new AssertionElements();
 		this.pFormula = new FormulaElements();
 		this.pAtom = new AtomElements();
 		this.pParamList = new ParamListElements();
@@ -437,7 +437,7 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 	
 	//Statements:
-	//	{Statements} Plus | {Statements} Minus | Form | Param | Ask;
+	//	{Statements} Plus | {Statements} Minus | Form | Assertion | Comment;
 	public StatementsElements getStatementsAccess() {
 		return pStatements;
 	}
@@ -466,18 +466,18 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getMinusAccess().getRule();
 	}
 	
-	//Ask:
-	//	Formula '?';
-	public AskElements getAskAccess() {
-		return pAsk;
+	//Comment:
+	//	'/*' text=ID '*/';
+	public CommentElements getCommentAccess() {
+		return pComment;
 	}
 	
-	public ParserRule getAskRule() {
-		return getAskAccess().getRule();
+	public ParserRule getCommentRule() {
+		return getCommentAccess().getRule();
 	}
 	
 	//Form:
-	//	Atom ({Operation.left=current} ':-' right=Formula)* '.';
+	//	Atom ':-' right=Formula '.';
 	public FormElements getFormAccess() {
 		return pForm;
 	}
@@ -486,14 +486,14 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getFormAccess().getRule();
 	}
 	
-	//Param:
+	//Assertion:
 	//	Formula '.';
-	public ParamElements getParamAccess() {
-		return pParam;
+	public AssertionElements getAssertionAccess() {
+		return pAssertion;
 	}
 	
-	public ParserRule getParamRule() {
-		return getParamAccess().getRule();
+	public ParserRule getAssertionRule() {
+		return getAssertionAccess().getRule();
 	}
 	
 	//Formula:
@@ -517,7 +517,7 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 	
 	//ParamList Par:
-	//	Primary ({ParamList.left=current} ',' right=Primary);
+	//	Primary ({ParamList.left=current} ',' right=Primary)*;
 	public ParamListElements getParamListAccess() {
 		return pParamList;
 	}

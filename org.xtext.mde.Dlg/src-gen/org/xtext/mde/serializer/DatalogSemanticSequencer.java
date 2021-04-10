@@ -14,10 +14,10 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import org.xtext.mde.datalog.Comment;
 import org.xtext.mde.datalog.DatalogPackage;
 import org.xtext.mde.datalog.Formula;
 import org.xtext.mde.datalog.Model;
-import org.xtext.mde.datalog.Operation;
 import org.xtext.mde.datalog.ParamList;
 import org.xtext.mde.datalog.ParameterInt;
 import org.xtext.mde.datalog.ParameterPred;
@@ -39,14 +39,14 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == DatalogPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case DatalogPackage.COMMENT:
+				sequence_Comment(context, (Comment) semanticObject); 
+				return; 
 			case DatalogPackage.FORMULA:
 				sequence_Formula(context, (Formula) semanticObject); 
 				return; 
 			case DatalogPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
-				return; 
-			case DatalogPackage.OPERATION:
-				sequence_Form(context, (Operation) semanticObject); 
 				return; 
 			case DatalogPackage.PARAM_LIST:
 				sequence_ParamList(context, (ParamList) semanticObject); 
@@ -55,18 +55,23 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 				sequence_ParameterInt(context, (ParameterInt) semanticObject); 
 				return; 
 			case DatalogPackage.PARAMETER_PRED:
-				if (rule == grammarAccess.getStatementsRule()
-						|| rule == grammarAccess.getAskRule()
-						|| rule == grammarAccess.getFormRule()
-						|| action == grammarAccess.getFormAccess().getOperationLeftAction_1_0()
-						|| rule == grammarAccess.getParamRule()
+				if (rule == grammarAccess.getStatementsRule()) {
+					sequence_Atom_Form_ParameterPred(context, (ParameterPred) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getFormRule()) {
+					sequence_Atom_Form_ParameterPred(context, (ParameterPred) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getAssertionRule()
 						|| rule == grammarAccess.getFormulaRule()
 						|| action == grammarAccess.getFormulaAccess().getFormulaLeftAction_1_0()
 						|| rule == grammarAccess.getAtomRule()) {
 					sequence_Atom_ParameterPred(context, (ParameterPred) semanticObject); 
 					return; 
 				}
-				else if (action == grammarAccess.getParamListAccess().getParamListLeftAction_1_0()
+				else if (rule == grammarAccess.getParamListRule()
+						|| action == grammarAccess.getParamListAccess().getParamListLeftAction_1_0()
 						|| rule == grammarAccess.getPrimaryRule()
 						|| rule == grammarAccess.getParameterPredRule()) {
 					sequence_ParameterPred(context, (ParameterPred) semanticObject); 
@@ -87,10 +92,30 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * Contexts:
 	 *     Statements returns ParameterPred
-	 *     Ask returns ParameterPred
-	 *     Form returns ParameterPred
-	 *     Form.Operation_1_0 returns ParameterPred
-	 *     Param returns ParameterPred
+	 *
+	 * Constraint:
+	 *     (low=PREDICATE list=ParamList right=Formula?)
+	 */
+	protected void sequence_Atom_Form_ParameterPred(ISerializationContext context, ParameterPred semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	// This method is commented out because it has the same signature as another method in this class.
+	// This is probably a bug in Xtext's serializer, please report it here: 
+	// https://bugs.eclipse.org/bugs/enter_bug.cgi?product=TMF
+	//
+	// Contexts:
+	//     Form returns ParameterPred
+	//
+	// Constraint:
+	//     (low=PREDICATE list=ParamList right=Formula)
+	//
+	// protected void sequence_Atom_Form_ParameterPred(ISerializationContext context, ParameterPred semanticObject) { }
+	
+	/**
+	 * Contexts:
+	 *     Assertion returns ParameterPred
 	 *     Formula returns ParameterPred
 	 *     Formula.Formula_1_0 returns ParameterPred
 	 *     Atom returns ParameterPred
@@ -114,23 +139,19 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
-	 *     Statements returns Operation
-	 *     Form returns Operation
-	 *     Form.Operation_1_0 returns Operation
+	 *     Statements returns Comment
+	 *     Comment returns Comment
 	 *
 	 * Constraint:
-	 *     (left=Form_Operation_1_0 right=Formula)
+	 *     text=ID
 	 */
-	protected void sequence_Form(ISerializationContext context, Operation semanticObject) {
+	protected void sequence_Comment(ISerializationContext context, Comment semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DatalogPackage.Literals.OPERATION__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DatalogPackage.Literals.OPERATION__LEFT));
-			if (transientValues.isValueTransient(semanticObject, DatalogPackage.Literals.OPERATION__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DatalogPackage.Literals.OPERATION__RIGHT));
+			if (transientValues.isValueTransient(semanticObject, DatalogPackage.Literals.COMMENT__TEXT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DatalogPackage.Literals.COMMENT__TEXT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getFormAccess().getOperationLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getFormAccess().getRightFormulaParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getCommentAccess().getTextIDTerminalRuleCall_1_0(), semanticObject.getText());
 		feeder.finish();
 	}
 	
@@ -138,8 +159,7 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * Contexts:
 	 *     Statements returns Formula
-	 *     Ask returns Formula
-	 *     Param returns Formula
+	 *     Assertion returns Formula
 	 *     Formula returns Formula
 	 *     Formula.Formula_1_0 returns Formula
 	 *
@@ -175,6 +195,7 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * Contexts:
 	 *     ParamList returns ParamList
+	 *     ParamList.ParamList_1_0 returns ParamList
 	 *
 	 * Constraint:
 	 *     (left=ParamList_ParamList_1_0 right=Primary)
@@ -195,6 +216,7 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     ParamList returns ParameterInt
 	 *     ParamList.ParamList_1_0 returns ParameterInt
 	 *     Primary returns ParameterInt
 	 *     ParameterInt returns ParameterInt
@@ -215,6 +237,7 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     ParamList returns ParameterPred
 	 *     ParamList.ParamList_1_0 returns ParameterPred
 	 *     Primary returns ParameterPred
 	 *     ParameterPred returns ParameterPred
@@ -235,6 +258,7 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     ParamList returns ParameterVar
 	 *     ParamList.ParamList_1_0 returns ParameterVar
 	 *     Primary returns ParameterVar
 	 *     ParameterVar returns ParameterVar

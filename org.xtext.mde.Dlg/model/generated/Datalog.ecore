@@ -6,13 +6,15 @@
         eType="#//Statements" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statements"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Ask" eSuperTypes="#//Statements"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Comment" eSuperTypes="#//Statements">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Form" eSuperTypes="#//Statements"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Param" eSuperTypes="#//Statements"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Formula" eSuperTypes="#//Ask #//Param">
+  <eClassifiers xsi:type="ecore:EClass" name="Assertion" eSuperTypes="#//Statements"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Formula" eSuperTypes="#//Assertion">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Formula"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Atom"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Formula"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Atom" eSuperTypes="#//Form #//Formula"/>
@@ -26,11 +28,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="ParameterPred" eSuperTypes="#//Atom #//Par">
     <eStructuralFeatures xsi:type="ecore:EReference" name="list" eType="#//Par" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="low" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="#//Form">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Form" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Formula"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParamList" eSuperTypes="#//Par">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Par" containment="true"/>

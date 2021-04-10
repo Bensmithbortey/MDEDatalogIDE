@@ -21,7 +21,7 @@ package org.xtext.mde.datalog;
  * @model
  * @generated
  */
-public interface Formula extends Ask, Param
+public interface Formula extends Assertion
 {
   /**
    * Returns the value of the '<em><b>Left</b></em>' containment reference.
@@ -50,12 +50,12 @@ public interface Formula extends Ask, Param
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' containment reference.
-   * @see #setRight(Atom)
+   * @see #setRight(Formula)
    * @see org.xtext.mde.datalog.DatalogPackage#getFormula_Right()
    * @model containment="true"
    * @generated
    */
-  Atom getRight();
+  Formula getRight();
 
   /**
    * Sets the value of the '{@link org.xtext.mde.datalog.Formula#getRight <em>Right</em>}' containment reference.
@@ -65,6 +65,6 @@ public interface Formula extends Ask, Param
    * @see #getRight()
    * @generated
    */
-  void setRight(Atom value);
+  void setRight(Formula value);
 
 } // Formula

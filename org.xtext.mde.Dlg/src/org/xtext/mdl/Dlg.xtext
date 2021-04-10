@@ -6,7 +6,7 @@ Model:
 	Program += Statements*;
 
 Statements:
-	{Statements} Plus  | {Statements} Minus | Form | Param | Ask
+	{Statements} Plus  | {Statements} Minus | Form | Assertion | Comment
 ;
 
 Plus:
@@ -17,15 +17,15 @@ Minus:
 	'-'
 ;
 
-Ask:
-	Formula '?'
+Comment:
+	'/*' text = ID '*/'
 ;
 
 Form:
-	Atom ({Operation.left=current} ':-' right=Formula)* '.'
+	Atom ':-' right = Formula '.'
 ;
 
-Param:
+Assertion:
 	Formula '.'
 ;
 
@@ -38,7 +38,7 @@ Atom:
 ;
 
 ParamList returns Par:
-	Primary ({ParamList.left=current} ',' right=Primary)
+	Primary ({ParamList.left=current} ',' right=Primary)*
 ;
 
 Primary returns Par:
@@ -58,9 +58,9 @@ ParameterPred:
 ;
 
 terminal PREDICATE:
-	('a'..'z')(('a'..'z')|('0'..'9')|('A'..'Z')|('_'))*
+	('a'..'z')('a'..'z'|'0'..'9'|'A'..'Z'|'_')*
 ;
 
 terminal VARIABLE:
-	('A'..'Z')(('A'..'Z')|('a'..'z')|('0'..'9')|('_'))*
+	('A'..'Z')('A'..'Z'|'a'..'z'|'0'..'9'|'_')*
 ;

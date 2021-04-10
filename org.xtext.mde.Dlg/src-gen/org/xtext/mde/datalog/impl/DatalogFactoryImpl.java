@@ -67,16 +67,15 @@ public class DatalogFactoryImpl extends EFactoryImpl implements DatalogFactory
     {
       case DatalogPackage.MODEL: return createModel();
       case DatalogPackage.STATEMENTS: return createStatements();
-      case DatalogPackage.ASK: return createAsk();
+      case DatalogPackage.COMMENT: return createComment();
       case DatalogPackage.FORM: return createForm();
-      case DatalogPackage.PARAM: return createParam();
+      case DatalogPackage.ASSERTION: return createAssertion();
       case DatalogPackage.FORMULA: return createFormula();
       case DatalogPackage.ATOM: return createAtom();
       case DatalogPackage.PAR: return createPar();
       case DatalogPackage.PARAMETER_INT: return createParameterInt();
       case DatalogPackage.PARAMETER_VAR: return createParameterVar();
       case DatalogPackage.PARAMETER_PRED: return createParameterPred();
-      case DatalogPackage.OPERATION: return createOperation();
       case DatalogPackage.PARAM_LIST: return createParamList();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -113,10 +112,10 @@ public class DatalogFactoryImpl extends EFactoryImpl implements DatalogFactory
    * @generated
    */
   @Override
-  public Ask createAsk()
+  public Comment createComment()
   {
-    AskImpl ask = new AskImpl();
-    return ask;
+    CommentImpl comment = new CommentImpl();
+    return comment;
   }
 
   /**
@@ -137,10 +136,10 @@ public class DatalogFactoryImpl extends EFactoryImpl implements DatalogFactory
    * @generated
    */
   @Override
-  public Param createParam()
+  public Assertion createAssertion()
   {
-    ParamImpl param = new ParamImpl();
-    return param;
+    AssertionImpl assertion = new AssertionImpl();
+    return assertion;
   }
 
   /**
@@ -213,18 +212,6 @@ public class DatalogFactoryImpl extends EFactoryImpl implements DatalogFactory
   {
     ParameterPredImpl parameterPred = new ParameterPredImpl();
     return parameterPred;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Operation createOperation()
-  {
-    OperationImpl operation = new OperationImpl();
-    return operation;
   }
 
   /**

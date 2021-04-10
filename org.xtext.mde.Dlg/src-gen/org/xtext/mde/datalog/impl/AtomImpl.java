@@ -11,11 +11,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.xtext.mde.datalog.Ask;
+import org.xtext.mde.datalog.Assertion;
 import org.xtext.mde.datalog.Atom;
 import org.xtext.mde.datalog.DatalogPackage;
 import org.xtext.mde.datalog.Formula;
-import org.xtext.mde.datalog.Param;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,7 +50,7 @@ public class AtomImpl extends FormImpl implements Atom
    * @generated
    * @ordered
    */
-  protected Atom right;
+  protected Formula right;
 
   /**
    * <!-- begin-user-doc -->
@@ -130,7 +129,7 @@ public class AtomImpl extends FormImpl implements Atom
    * @generated
    */
   @Override
-  public Atom getRight()
+  public Formula getRight()
   {
     return right;
   }
@@ -140,9 +139,9 @@ public class AtomImpl extends FormImpl implements Atom
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRight(Atom newRight, NotificationChain msgs)
+  public NotificationChain basicSetRight(Formula newRight, NotificationChain msgs)
   {
-    Atom oldRight = right;
+    Formula oldRight = right;
     right = newRight;
     if (eNotificationRequired())
     {
@@ -158,7 +157,7 @@ public class AtomImpl extends FormImpl implements Atom
    * @generated
    */
   @Override
-  public void setRight(Atom newRight)
+  public void setRight(Formula newRight)
   {
     if (newRight != right)
     {
@@ -224,7 +223,7 @@ public class AtomImpl extends FormImpl implements Atom
         setLeft((Formula)newValue);
         return;
       case DatalogPackage.ATOM__RIGHT:
-        setRight((Atom)newValue);
+        setRight((Formula)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -244,7 +243,7 @@ public class AtomImpl extends FormImpl implements Atom
         setLeft((Formula)null);
         return;
       case DatalogPackage.ATOM__RIGHT:
-        setRight((Atom)null);
+        setRight((Formula)null);
         return;
     }
     super.eUnset(featureID);
@@ -276,14 +275,7 @@ public class AtomImpl extends FormImpl implements Atom
   @Override
   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
-    if (baseClass == Ask.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == Param.class)
+    if (baseClass == Assertion.class)
     {
       switch (derivedFeatureID)
       {
@@ -310,14 +302,7 @@ public class AtomImpl extends FormImpl implements Atom
   @Override
   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
-    if (baseClass == Ask.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == Param.class)
+    if (baseClass == Assertion.class)
     {
       switch (baseFeatureID)
       {

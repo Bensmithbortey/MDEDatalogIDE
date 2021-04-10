@@ -10,9 +10,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Datalog.ecore#//Model/Program"/>
     </genClasses>
     <genClasses ecoreClass="Datalog.ecore#//Statements"/>
-    <genClasses ecoreClass="Datalog.ecore#//Ask"/>
+    <genClasses ecoreClass="Datalog.ecore#//Comment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Datalog.ecore#//Comment/text"/>
+    </genClasses>
     <genClasses ecoreClass="Datalog.ecore#//Form"/>
-    <genClasses ecoreClass="Datalog.ecore#//Param"/>
+    <genClasses ecoreClass="Datalog.ecore#//Assertion"/>
     <genClasses ecoreClass="Datalog.ecore#//Formula">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Datalog.ecore#//Formula/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Datalog.ecore#//Formula/right"/>
@@ -28,10 +30,6 @@
     <genClasses ecoreClass="Datalog.ecore#//ParameterPred">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Datalog.ecore#//ParameterPred/list"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Datalog.ecore#//ParameterPred/low"/>
-    </genClasses>
-    <genClasses ecoreClass="Datalog.ecore#//Operation">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Datalog.ecore#//Operation/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Datalog.ecore#//Operation/right"/>
     </genClasses>
     <genClasses ecoreClass="Datalog.ecore#//ParamList">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Datalog.ecore#//ParamList/left"/>

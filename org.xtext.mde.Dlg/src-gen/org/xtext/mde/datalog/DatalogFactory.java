@@ -42,13 +42,13 @@ public interface DatalogFactory extends EFactory
   Statements createStatements();
 
   /**
-   * Returns a new object of class '<em>Ask</em>'.
+   * Returns a new object of class '<em>Comment</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Ask</em>'.
+   * @return a new object of class '<em>Comment</em>'.
    * @generated
    */
-  Ask createAsk();
+  Comment createComment();
 
   /**
    * Returns a new object of class '<em>Form</em>'.
@@ -60,13 +60,13 @@ public interface DatalogFactory extends EFactory
   Form createForm();
 
   /**
-   * Returns a new object of class '<em>Param</em>'.
+   * Returns a new object of class '<em>Assertion</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Param</em>'.
+   * @return a new object of class '<em>Assertion</em>'.
    * @generated
    */
-  Param createParam();
+  Assertion createAssertion();
 
   /**
    * Returns a new object of class '<em>Formula</em>'.
@@ -121,15 +121,6 @@ public interface DatalogFactory extends EFactory
    * @generated
    */
   ParameterPred createParameterPred();
-
-  /**
-   * Returns a new object of class '<em>Operation</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Operation</em>'.
-   * @generated
-   */
-  Operation createOperation();
 
   /**
    * Returns a new object of class '<em>Param List</em>'.

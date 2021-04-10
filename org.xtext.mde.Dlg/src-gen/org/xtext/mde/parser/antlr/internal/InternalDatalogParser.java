@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalDatalogParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_VARIABLE", "RULE_PREDICATE", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'+'", "'-'", "'?'", "':-'", "'.'", "','", "'('", "')'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_VARIABLE", "RULE_PREDICATE", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'+'", "'-'", "'/*'", "'*/'", "':-'", "'.'", "','", "'('", "')'"
     };
     public static final int RULE_STRING=8;
     public static final int RULE_SL_COMMENT=10;
@@ -33,14 +33,15 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
     public static final int T__13=13;
     public static final int T__14=14;
     public static final int EOF=-1;
-    public static final int RULE_ID=7;
+    public static final int RULE_ID=4;
     public static final int RULE_WS=11;
-    public static final int RULE_VARIABLE=5;
+    public static final int RULE_VARIABLE=6;
     public static final int RULE_ANY_OTHER=12;
-    public static final int RULE_INT=4;
-    public static final int RULE_PREDICATE=6;
+    public static final int RULE_INT=5;
+    public static final int RULE_PREDICATE=7;
     public static final int RULE_ML_COMMENT=9;
     public static final int T__20=20;
+    public static final int T__21=21;
 
     // delegates
     // delegators
@@ -138,7 +139,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==RULE_PREDICATE||(LA1_0>=13 && LA1_0<=14)) ) {
+                if ( (LA1_0==RULE_PREDICATE||(LA1_0>=13 && LA1_0<=15)) ) {
                     alt1=1;
                 }
 
@@ -237,25 +238,25 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStatements"
-    // InternalDatalog.g:107:1: ruleStatements returns [EObject current=null] : ( ( () rulePlus ) | ( () ruleMinus ) | this_Form_4= ruleForm | this_Param_5= ruleParam | this_Ask_6= ruleAsk ) ;
+    // InternalDatalog.g:107:1: ruleStatements returns [EObject current=null] : ( ( () rulePlus ) | ( () ruleMinus ) | this_Form_4= ruleForm | this_Assertion_5= ruleAssertion | this_Comment_6= ruleComment ) ;
     public final EObject ruleStatements() throws RecognitionException {
         EObject current = null;
 
         EObject this_Form_4 = null;
 
-        EObject this_Param_5 = null;
+        EObject this_Assertion_5 = null;
 
-        EObject this_Ask_6 = null;
+        EObject this_Comment_6 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDatalog.g:113:2: ( ( ( () rulePlus ) | ( () ruleMinus ) | this_Form_4= ruleForm | this_Param_5= ruleParam | this_Ask_6= ruleAsk ) )
-            // InternalDatalog.g:114:2: ( ( () rulePlus ) | ( () ruleMinus ) | this_Form_4= ruleForm | this_Param_5= ruleParam | this_Ask_6= ruleAsk )
+            // InternalDatalog.g:113:2: ( ( ( () rulePlus ) | ( () ruleMinus ) | this_Form_4= ruleForm | this_Assertion_5= ruleAssertion | this_Comment_6= ruleComment ) )
+            // InternalDatalog.g:114:2: ( ( () rulePlus ) | ( () ruleMinus ) | this_Form_4= ruleForm | this_Assertion_5= ruleAssertion | this_Comment_6= ruleComment )
             {
-            // InternalDatalog.g:114:2: ( ( () rulePlus ) | ( () ruleMinus ) | this_Form_4= ruleForm | this_Param_5= ruleParam | this_Ask_6= ruleAsk )
+            // InternalDatalog.g:114:2: ( ( () rulePlus ) | ( () ruleMinus ) | this_Form_4= ruleForm | this_Assertion_5= ruleAssertion | this_Comment_6= ruleComment )
             int alt2=5;
             alt2 = dfa2.predict(input);
             switch (alt2) {
@@ -346,36 +347,36 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalDatalog.g:158:3: this_Param_5= ruleParam
+                    // InternalDatalog.g:158:3: this_Assertion_5= ruleAssertion
                     {
 
-                    			newCompositeNode(grammarAccess.getStatementsAccess().getParamParserRuleCall_3());
+                    			newCompositeNode(grammarAccess.getStatementsAccess().getAssertionParserRuleCall_3());
                     		
                     pushFollow(FOLLOW_2);
-                    this_Param_5=ruleParam();
+                    this_Assertion_5=ruleAssertion();
 
                     state._fsp--;
 
 
-                    			current = this_Param_5;
+                    			current = this_Assertion_5;
                     			afterParserOrEnumRuleCall();
                     		
 
                     }
                     break;
                 case 5 :
-                    // InternalDatalog.g:167:3: this_Ask_6= ruleAsk
+                    // InternalDatalog.g:167:3: this_Comment_6= ruleComment
                     {
 
-                    			newCompositeNode(grammarAccess.getStatementsAccess().getAskParserRuleCall_4());
+                    			newCompositeNode(grammarAccess.getStatementsAccess().getCommentParserRuleCall_4());
                     		
                     pushFollow(FOLLOW_2);
-                    this_Ask_6=ruleAsk();
+                    this_Comment_6=ruleComment();
 
                     state._fsp--;
 
 
-                    			current = this_Ask_6;
+                    			current = this_Comment_6;
                     			afterParserOrEnumRuleCall();
                     		
 
@@ -551,25 +552,25 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleMinus"
 
 
-    // $ANTLR start "entryRuleAsk"
-    // InternalDatalog.g:223:1: entryRuleAsk returns [EObject current=null] : iv_ruleAsk= ruleAsk EOF ;
-    public final EObject entryRuleAsk() throws RecognitionException {
+    // $ANTLR start "entryRuleComment"
+    // InternalDatalog.g:223:1: entryRuleComment returns [EObject current=null] : iv_ruleComment= ruleComment EOF ;
+    public final EObject entryRuleComment() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleAsk = null;
+        EObject iv_ruleComment = null;
 
 
         try {
-            // InternalDatalog.g:223:44: (iv_ruleAsk= ruleAsk EOF )
-            // InternalDatalog.g:224:2: iv_ruleAsk= ruleAsk EOF
+            // InternalDatalog.g:223:48: (iv_ruleComment= ruleComment EOF )
+            // InternalDatalog.g:224:2: iv_ruleComment= ruleComment EOF
             {
-             newCompositeNode(grammarAccess.getAskRule()); 
+             newCompositeNode(grammarAccess.getCommentRule()); 
             pushFollow(FOLLOW_1);
-            iv_ruleAsk=ruleAsk();
+            iv_ruleComment=ruleComment();
 
             state._fsp--;
 
-             current =iv_ruleAsk; 
+             current =iv_ruleComment; 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -584,43 +585,61 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleAsk"
+    // $ANTLR end "entryRuleComment"
 
 
-    // $ANTLR start "ruleAsk"
-    // InternalDatalog.g:230:1: ruleAsk returns [EObject current=null] : (this_Formula_0= ruleFormula otherlv_1= '?' ) ;
-    public final EObject ruleAsk() throws RecognitionException {
+    // $ANTLR start "ruleComment"
+    // InternalDatalog.g:230:1: ruleComment returns [EObject current=null] : (otherlv_0= '/*' ( (lv_text_1_0= RULE_ID ) ) otherlv_2= '*/' ) ;
+    public final EObject ruleComment() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_1=null;
-        EObject this_Formula_0 = null;
-
+        Token otherlv_0=null;
+        Token lv_text_1_0=null;
+        Token otherlv_2=null;
 
 
         	enterRule();
 
         try {
-            // InternalDatalog.g:236:2: ( (this_Formula_0= ruleFormula otherlv_1= '?' ) )
-            // InternalDatalog.g:237:2: (this_Formula_0= ruleFormula otherlv_1= '?' )
+            // InternalDatalog.g:236:2: ( (otherlv_0= '/*' ( (lv_text_1_0= RULE_ID ) ) otherlv_2= '*/' ) )
+            // InternalDatalog.g:237:2: (otherlv_0= '/*' ( (lv_text_1_0= RULE_ID ) ) otherlv_2= '*/' )
             {
-            // InternalDatalog.g:237:2: (this_Formula_0= ruleFormula otherlv_1= '?' )
-            // InternalDatalog.g:238:3: this_Formula_0= ruleFormula otherlv_1= '?'
+            // InternalDatalog.g:237:2: (otherlv_0= '/*' ( (lv_text_1_0= RULE_ID ) ) otherlv_2= '*/' )
+            // InternalDatalog.g:238:3: otherlv_0= '/*' ( (lv_text_1_0= RULE_ID ) ) otherlv_2= '*/'
             {
+            otherlv_0=(Token)match(input,15,FOLLOW_4); 
 
-            			newCompositeNode(grammarAccess.getAskAccess().getFormulaParserRuleCall_0());
+            			newLeafNode(otherlv_0, grammarAccess.getCommentAccess().getSolidusAsteriskKeyword_0());
             		
-            pushFollow(FOLLOW_4);
-            this_Formula_0=ruleFormula();
+            // InternalDatalog.g:242:3: ( (lv_text_1_0= RULE_ID ) )
+            // InternalDatalog.g:243:4: (lv_text_1_0= RULE_ID )
+            {
+            // InternalDatalog.g:243:4: (lv_text_1_0= RULE_ID )
+            // InternalDatalog.g:244:5: lv_text_1_0= RULE_ID
+            {
+            lv_text_1_0=(Token)match(input,RULE_ID,FOLLOW_5); 
 
-            state._fsp--;
+            					newLeafNode(lv_text_1_0, grammarAccess.getCommentAccess().getTextIDTerminalRuleCall_1_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getCommentRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"text",
+            						lv_text_1_0,
+            						"org.eclipse.xtext.common.Terminals.ID");
+            				
+
+            }
 
 
-            			current = this_Formula_0;
-            			afterParserOrEnumRuleCall();
-            		
-            otherlv_1=(Token)match(input,15,FOLLOW_2); 
+            }
 
-            			newLeafNode(otherlv_1, grammarAccess.getAskAccess().getQuestionMarkKeyword_1());
+            otherlv_2=(Token)match(input,16,FOLLOW_2); 
+
+            			newLeafNode(otherlv_2, grammarAccess.getCommentAccess().getAsteriskSolidusKeyword_2());
             		
 
             }
@@ -641,11 +660,11 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleAsk"
+    // $ANTLR end "ruleComment"
 
 
     // $ANTLR start "entryRuleForm"
-    // InternalDatalog.g:254:1: entryRuleForm returns [EObject current=null] : iv_ruleForm= ruleForm EOF ;
+    // InternalDatalog.g:268:1: entryRuleForm returns [EObject current=null] : iv_ruleForm= ruleForm EOF ;
     public final EObject entryRuleForm() throws RecognitionException {
         EObject current = null;
 
@@ -653,8 +672,8 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDatalog.g:254:45: (iv_ruleForm= ruleForm EOF )
-            // InternalDatalog.g:255:2: iv_ruleForm= ruleForm EOF
+            // InternalDatalog.g:268:45: (iv_ruleForm= ruleForm EOF )
+            // InternalDatalog.g:269:2: iv_ruleForm= ruleForm EOF
             {
              newCompositeNode(grammarAccess.getFormRule()); 
             pushFollow(FOLLOW_1);
@@ -681,31 +700,31 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleForm"
-    // InternalDatalog.g:261:1: ruleForm returns [EObject current=null] : (this_Atom_0= ruleAtom ( () otherlv_2= ':-' ( (lv_right_3_0= ruleFormula ) ) )* otherlv_4= '.' ) ;
+    // InternalDatalog.g:275:1: ruleForm returns [EObject current=null] : (this_Atom_0= ruleAtom otherlv_1= ':-' ( (lv_right_2_0= ruleFormula ) ) otherlv_3= '.' ) ;
     public final EObject ruleForm() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_2=null;
-        Token otherlv_4=null;
+        Token otherlv_1=null;
+        Token otherlv_3=null;
         EObject this_Atom_0 = null;
 
-        EObject lv_right_3_0 = null;
+        EObject lv_right_2_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDatalog.g:267:2: ( (this_Atom_0= ruleAtom ( () otherlv_2= ':-' ( (lv_right_3_0= ruleFormula ) ) )* otherlv_4= '.' ) )
-            // InternalDatalog.g:268:2: (this_Atom_0= ruleAtom ( () otherlv_2= ':-' ( (lv_right_3_0= ruleFormula ) ) )* otherlv_4= '.' )
+            // InternalDatalog.g:281:2: ( (this_Atom_0= ruleAtom otherlv_1= ':-' ( (lv_right_2_0= ruleFormula ) ) otherlv_3= '.' ) )
+            // InternalDatalog.g:282:2: (this_Atom_0= ruleAtom otherlv_1= ':-' ( (lv_right_2_0= ruleFormula ) ) otherlv_3= '.' )
             {
-            // InternalDatalog.g:268:2: (this_Atom_0= ruleAtom ( () otherlv_2= ':-' ( (lv_right_3_0= ruleFormula ) ) )* otherlv_4= '.' )
-            // InternalDatalog.g:269:3: this_Atom_0= ruleAtom ( () otherlv_2= ':-' ( (lv_right_3_0= ruleFormula ) ) )* otherlv_4= '.'
+            // InternalDatalog.g:282:2: (this_Atom_0= ruleAtom otherlv_1= ':-' ( (lv_right_2_0= ruleFormula ) ) otherlv_3= '.' )
+            // InternalDatalog.g:283:3: this_Atom_0= ruleAtom otherlv_1= ':-' ( (lv_right_2_0= ruleFormula ) ) otherlv_3= '.'
             {
 
             			newCompositeNode(grammarAccess.getFormAccess().getAtomParserRuleCall_0());
             		
-            pushFollow(FOLLOW_5);
+            pushFollow(FOLLOW_6);
             this_Atom_0=ruleAtom();
 
             state._fsp--;
@@ -714,79 +733,44 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
             			current = this_Atom_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalDatalog.g:277:3: ( () otherlv_2= ':-' ( (lv_right_3_0= ruleFormula ) ) )*
-            loop3:
-            do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+            otherlv_1=(Token)match(input,17,FOLLOW_7); 
 
-                if ( (LA3_0==16) ) {
-                    alt3=1;
-                }
+            			newLeafNode(otherlv_1, grammarAccess.getFormAccess().getColonHyphenMinusKeyword_1());
+            		
+            // InternalDatalog.g:295:3: ( (lv_right_2_0= ruleFormula ) )
+            // InternalDatalog.g:296:4: (lv_right_2_0= ruleFormula )
+            {
+            // InternalDatalog.g:296:4: (lv_right_2_0= ruleFormula )
+            // InternalDatalog.g:297:5: lv_right_2_0= ruleFormula
+            {
 
+            					newCompositeNode(grammarAccess.getFormAccess().getRightFormulaParserRuleCall_2_0());
+            				
+            pushFollow(FOLLOW_8);
+            lv_right_2_0=ruleFormula();
 
-                switch (alt3) {
-            	case 1 :
-            	    // InternalDatalog.g:278:4: () otherlv_2= ':-' ( (lv_right_3_0= ruleFormula ) )
-            	    {
-            	    // InternalDatalog.g:278:4: ()
-            	    // InternalDatalog.g:279:5: 
-            	    {
-
-            	    					current = forceCreateModelElementAndSet(
-            	    						grammarAccess.getFormAccess().getOperationLeftAction_1_0(),
-            	    						current);
-            	    				
-
-            	    }
-
-            	    otherlv_2=(Token)match(input,16,FOLLOW_6); 
-
-            	    				newLeafNode(otherlv_2, grammarAccess.getFormAccess().getColonHyphenMinusKeyword_1_1());
-            	    			
-            	    // InternalDatalog.g:289:4: ( (lv_right_3_0= ruleFormula ) )
-            	    // InternalDatalog.g:290:5: (lv_right_3_0= ruleFormula )
-            	    {
-            	    // InternalDatalog.g:290:5: (lv_right_3_0= ruleFormula )
-            	    // InternalDatalog.g:291:6: lv_right_3_0= ruleFormula
-            	    {
-
-            	    						newCompositeNode(grammarAccess.getFormAccess().getRightFormulaParserRuleCall_1_2_0());
-            	    					
-            	    pushFollow(FOLLOW_5);
-            	    lv_right_3_0=ruleFormula();
-
-            	    state._fsp--;
+            state._fsp--;
 
 
-            	    						if (current==null) {
-            	    							current = createModelElementForParent(grammarAccess.getFormRule());
-            	    						}
-            	    						set(
-            	    							current,
-            	    							"right",
-            	    							lv_right_3_0,
-            	    							"org.xtext.mde.Datalog.Formula");
-            	    						afterParserOrEnumRuleCall();
-            	    					
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getFormRule());
+            					}
+            					set(
+            						current,
+            						"right",
+            						lv_right_2_0,
+            						"org.xtext.mde.Datalog.Formula");
+            					afterParserOrEnumRuleCall();
+            				
 
-            	    }
-
-
-            	    }
+            }
 
 
-            	    }
-            	    break;
+            }
 
-            	default :
-            	    break loop3;
-                }
-            } while (true);
+            otherlv_3=(Token)match(input,18,FOLLOW_2); 
 
-            otherlv_4=(Token)match(input,17,FOLLOW_2); 
-
-            			newLeafNode(otherlv_4, grammarAccess.getFormAccess().getFullStopKeyword_2());
+            			newLeafNode(otherlv_3, grammarAccess.getFormAccess().getFullStopKeyword_3());
             		
 
             }
@@ -810,25 +794,25 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleForm"
 
 
-    // $ANTLR start "entryRuleParam"
-    // InternalDatalog.g:317:1: entryRuleParam returns [EObject current=null] : iv_ruleParam= ruleParam EOF ;
-    public final EObject entryRuleParam() throws RecognitionException {
+    // $ANTLR start "entryRuleAssertion"
+    // InternalDatalog.g:322:1: entryRuleAssertion returns [EObject current=null] : iv_ruleAssertion= ruleAssertion EOF ;
+    public final EObject entryRuleAssertion() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleParam = null;
+        EObject iv_ruleAssertion = null;
 
 
         try {
-            // InternalDatalog.g:317:46: (iv_ruleParam= ruleParam EOF )
-            // InternalDatalog.g:318:2: iv_ruleParam= ruleParam EOF
+            // InternalDatalog.g:322:50: (iv_ruleAssertion= ruleAssertion EOF )
+            // InternalDatalog.g:323:2: iv_ruleAssertion= ruleAssertion EOF
             {
-             newCompositeNode(grammarAccess.getParamRule()); 
+             newCompositeNode(grammarAccess.getAssertionRule()); 
             pushFollow(FOLLOW_1);
-            iv_ruleParam=ruleParam();
+            iv_ruleAssertion=ruleAssertion();
 
             state._fsp--;
 
-             current =iv_ruleParam; 
+             current =iv_ruleAssertion; 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -843,12 +827,12 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleParam"
+    // $ANTLR end "entryRuleAssertion"
 
 
-    // $ANTLR start "ruleParam"
-    // InternalDatalog.g:324:1: ruleParam returns [EObject current=null] : (this_Formula_0= ruleFormula otherlv_1= '.' ) ;
-    public final EObject ruleParam() throws RecognitionException {
+    // $ANTLR start "ruleAssertion"
+    // InternalDatalog.g:329:1: ruleAssertion returns [EObject current=null] : (this_Formula_0= ruleFormula otherlv_1= '.' ) ;
+    public final EObject ruleAssertion() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
@@ -859,16 +843,16 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDatalog.g:330:2: ( (this_Formula_0= ruleFormula otherlv_1= '.' ) )
-            // InternalDatalog.g:331:2: (this_Formula_0= ruleFormula otherlv_1= '.' )
+            // InternalDatalog.g:335:2: ( (this_Formula_0= ruleFormula otherlv_1= '.' ) )
+            // InternalDatalog.g:336:2: (this_Formula_0= ruleFormula otherlv_1= '.' )
             {
-            // InternalDatalog.g:331:2: (this_Formula_0= ruleFormula otherlv_1= '.' )
-            // InternalDatalog.g:332:3: this_Formula_0= ruleFormula otherlv_1= '.'
+            // InternalDatalog.g:336:2: (this_Formula_0= ruleFormula otherlv_1= '.' )
+            // InternalDatalog.g:337:3: this_Formula_0= ruleFormula otherlv_1= '.'
             {
 
-            			newCompositeNode(grammarAccess.getParamAccess().getFormulaParserRuleCall_0());
+            			newCompositeNode(grammarAccess.getAssertionAccess().getFormulaParserRuleCall_0());
             		
-            pushFollow(FOLLOW_7);
+            pushFollow(FOLLOW_8);
             this_Formula_0=ruleFormula();
 
             state._fsp--;
@@ -877,9 +861,9 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
             			current = this_Formula_0;
             			afterParserOrEnumRuleCall();
             		
-            otherlv_1=(Token)match(input,17,FOLLOW_2); 
+            otherlv_1=(Token)match(input,18,FOLLOW_2); 
 
-            			newLeafNode(otherlv_1, grammarAccess.getParamAccess().getFullStopKeyword_1());
+            			newLeafNode(otherlv_1, grammarAccess.getAssertionAccess().getFullStopKeyword_1());
             		
 
             }
@@ -900,11 +884,11 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleParam"
+    // $ANTLR end "ruleAssertion"
 
 
     // $ANTLR start "entryRuleFormula"
-    // InternalDatalog.g:348:1: entryRuleFormula returns [EObject current=null] : iv_ruleFormula= ruleFormula EOF ;
+    // InternalDatalog.g:353:1: entryRuleFormula returns [EObject current=null] : iv_ruleFormula= ruleFormula EOF ;
     public final EObject entryRuleFormula() throws RecognitionException {
         EObject current = null;
 
@@ -912,8 +896,8 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDatalog.g:348:48: (iv_ruleFormula= ruleFormula EOF )
-            // InternalDatalog.g:349:2: iv_ruleFormula= ruleFormula EOF
+            // InternalDatalog.g:353:48: (iv_ruleFormula= ruleFormula EOF )
+            // InternalDatalog.g:354:2: iv_ruleFormula= ruleFormula EOF
             {
              newCompositeNode(grammarAccess.getFormulaRule()); 
             pushFollow(FOLLOW_1);
@@ -940,7 +924,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFormula"
-    // InternalDatalog.g:355:1: ruleFormula returns [EObject current=null] : (this_Atom_0= ruleAtom ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )* ) ;
+    // InternalDatalog.g:360:1: ruleFormula returns [EObject current=null] : (this_Atom_0= ruleAtom ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )* ) ;
     public final EObject ruleFormula() throws RecognitionException {
         EObject current = null;
 
@@ -954,16 +938,16 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDatalog.g:361:2: ( (this_Atom_0= ruleAtom ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )* ) )
-            // InternalDatalog.g:362:2: (this_Atom_0= ruleAtom ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )* )
+            // InternalDatalog.g:366:2: ( (this_Atom_0= ruleAtom ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )* ) )
+            // InternalDatalog.g:367:2: (this_Atom_0= ruleAtom ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )* )
             {
-            // InternalDatalog.g:362:2: (this_Atom_0= ruleAtom ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )* )
-            // InternalDatalog.g:363:3: this_Atom_0= ruleAtom ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )*
+            // InternalDatalog.g:367:2: (this_Atom_0= ruleAtom ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )* )
+            // InternalDatalog.g:368:3: this_Atom_0= ruleAtom ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )*
             {
 
             			newCompositeNode(grammarAccess.getFormulaAccess().getAtomParserRuleCall_0());
             		
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             this_Atom_0=ruleAtom();
 
             state._fsp--;
@@ -972,23 +956,23 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
             			current = this_Atom_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalDatalog.g:371:3: ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )*
-            loop4:
+            // InternalDatalog.g:376:3: ( () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) ) )*
+            loop3:
             do {
-                int alt4=2;
-                int LA4_0 = input.LA(1);
+                int alt3=2;
+                int LA3_0 = input.LA(1);
 
-                if ( (LA4_0==18) ) {
-                    alt4=1;
+                if ( (LA3_0==19) ) {
+                    alt3=1;
                 }
 
 
-                switch (alt4) {
+                switch (alt3) {
             	case 1 :
-            	    // InternalDatalog.g:372:4: () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) )
+            	    // InternalDatalog.g:377:4: () otherlv_2= ',' ( (lv_right_3_0= ruleAtom ) )
             	    {
-            	    // InternalDatalog.g:372:4: ()
-            	    // InternalDatalog.g:373:5: 
+            	    // InternalDatalog.g:377:4: ()
+            	    // InternalDatalog.g:378:5: 
             	    {
 
             	    					current = forceCreateModelElementAndSet(
@@ -998,20 +982,20 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    otherlv_2=(Token)match(input,18,FOLLOW_6); 
+            	    otherlv_2=(Token)match(input,19,FOLLOW_7); 
 
             	    				newLeafNode(otherlv_2, grammarAccess.getFormulaAccess().getCommaKeyword_1_1());
             	    			
-            	    // InternalDatalog.g:383:4: ( (lv_right_3_0= ruleAtom ) )
-            	    // InternalDatalog.g:384:5: (lv_right_3_0= ruleAtom )
+            	    // InternalDatalog.g:388:4: ( (lv_right_3_0= ruleAtom ) )
+            	    // InternalDatalog.g:389:5: (lv_right_3_0= ruleAtom )
             	    {
-            	    // InternalDatalog.g:384:5: (lv_right_3_0= ruleAtom )
-            	    // InternalDatalog.g:385:6: lv_right_3_0= ruleAtom
+            	    // InternalDatalog.g:389:5: (lv_right_3_0= ruleAtom )
+            	    // InternalDatalog.g:390:6: lv_right_3_0= ruleAtom
             	    {
 
             	    						newCompositeNode(grammarAccess.getFormulaAccess().getRightAtomParserRuleCall_1_2_0());
             	    					
-            	    pushFollow(FOLLOW_8);
+            	    pushFollow(FOLLOW_9);
             	    lv_right_3_0=ruleAtom();
 
             	    state._fsp--;
@@ -1025,6 +1009,298 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
             	    							"right",
             	    							lv_right_3_0,
             	    							"org.xtext.mde.Datalog.Atom");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop3;
+                }
+            } while (true);
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleFormula"
+
+
+    // $ANTLR start "entryRuleAtom"
+    // InternalDatalog.g:412:1: entryRuleAtom returns [EObject current=null] : iv_ruleAtom= ruleAtom EOF ;
+    public final EObject entryRuleAtom() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleAtom = null;
+
+
+        try {
+            // InternalDatalog.g:412:45: (iv_ruleAtom= ruleAtom EOF )
+            // InternalDatalog.g:413:2: iv_ruleAtom= ruleAtom EOF
+            {
+             newCompositeNode(grammarAccess.getAtomRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleAtom=ruleAtom();
+
+            state._fsp--;
+
+             current =iv_ruleAtom; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleAtom"
+
+
+    // $ANTLR start "ruleAtom"
+    // InternalDatalog.g:419:1: ruleAtom returns [EObject current=null] : (this_ParameterPred_0= ruleParameterPred otherlv_1= '(' ( (lv_list_2_0= ruleParamList ) ) otherlv_3= ')' ) ;
+    public final EObject ruleAtom() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        Token otherlv_3=null;
+        EObject this_ParameterPred_0 = null;
+
+        EObject lv_list_2_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalDatalog.g:425:2: ( (this_ParameterPred_0= ruleParameterPred otherlv_1= '(' ( (lv_list_2_0= ruleParamList ) ) otherlv_3= ')' ) )
+            // InternalDatalog.g:426:2: (this_ParameterPred_0= ruleParameterPred otherlv_1= '(' ( (lv_list_2_0= ruleParamList ) ) otherlv_3= ')' )
+            {
+            // InternalDatalog.g:426:2: (this_ParameterPred_0= ruleParameterPred otherlv_1= '(' ( (lv_list_2_0= ruleParamList ) ) otherlv_3= ')' )
+            // InternalDatalog.g:427:3: this_ParameterPred_0= ruleParameterPred otherlv_1= '(' ( (lv_list_2_0= ruleParamList ) ) otherlv_3= ')'
+            {
+
+            			newCompositeNode(grammarAccess.getAtomAccess().getParameterPredParserRuleCall_0());
+            		
+            pushFollow(FOLLOW_10);
+            this_ParameterPred_0=ruleParameterPred();
+
+            state._fsp--;
+
+
+            			current = this_ParameterPred_0;
+            			afterParserOrEnumRuleCall();
+            		
+            otherlv_1=(Token)match(input,20,FOLLOW_11); 
+
+            			newLeafNode(otherlv_1, grammarAccess.getAtomAccess().getLeftParenthesisKeyword_1());
+            		
+            // InternalDatalog.g:439:3: ( (lv_list_2_0= ruleParamList ) )
+            // InternalDatalog.g:440:4: (lv_list_2_0= ruleParamList )
+            {
+            // InternalDatalog.g:440:4: (lv_list_2_0= ruleParamList )
+            // InternalDatalog.g:441:5: lv_list_2_0= ruleParamList
+            {
+
+            					newCompositeNode(grammarAccess.getAtomAccess().getListParamListParserRuleCall_2_0());
+            				
+            pushFollow(FOLLOW_12);
+            lv_list_2_0=ruleParamList();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getAtomRule());
+            					}
+            					set(
+            						current,
+            						"list",
+            						lv_list_2_0,
+            						"org.xtext.mde.Datalog.ParamList");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            otherlv_3=(Token)match(input,21,FOLLOW_2); 
+
+            			newLeafNode(otherlv_3, grammarAccess.getAtomAccess().getRightParenthesisKeyword_3());
+            		
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleAtom"
+
+
+    // $ANTLR start "entryRuleParamList"
+    // InternalDatalog.g:466:1: entryRuleParamList returns [EObject current=null] : iv_ruleParamList= ruleParamList EOF ;
+    public final EObject entryRuleParamList() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleParamList = null;
+
+
+        try {
+            // InternalDatalog.g:466:50: (iv_ruleParamList= ruleParamList EOF )
+            // InternalDatalog.g:467:2: iv_ruleParamList= ruleParamList EOF
+            {
+             newCompositeNode(grammarAccess.getParamListRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleParamList=ruleParamList();
+
+            state._fsp--;
+
+             current =iv_ruleParamList; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleParamList"
+
+
+    // $ANTLR start "ruleParamList"
+    // InternalDatalog.g:473:1: ruleParamList returns [EObject current=null] : (this_Primary_0= rulePrimary ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) )* ) ;
+    public final EObject ruleParamList() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_2=null;
+        EObject this_Primary_0 = null;
+
+        EObject lv_right_3_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalDatalog.g:479:2: ( (this_Primary_0= rulePrimary ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) )* ) )
+            // InternalDatalog.g:480:2: (this_Primary_0= rulePrimary ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) )* )
+            {
+            // InternalDatalog.g:480:2: (this_Primary_0= rulePrimary ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) )* )
+            // InternalDatalog.g:481:3: this_Primary_0= rulePrimary ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) )*
+            {
+
+            			newCompositeNode(grammarAccess.getParamListAccess().getPrimaryParserRuleCall_0());
+            		
+            pushFollow(FOLLOW_9);
+            this_Primary_0=rulePrimary();
+
+            state._fsp--;
+
+
+            			current = this_Primary_0;
+            			afterParserOrEnumRuleCall();
+            		
+            // InternalDatalog.g:489:3: ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) )*
+            loop4:
+            do {
+                int alt4=2;
+                int LA4_0 = input.LA(1);
+
+                if ( (LA4_0==19) ) {
+                    alt4=1;
+                }
+
+
+                switch (alt4) {
+            	case 1 :
+            	    // InternalDatalog.g:490:4: () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) )
+            	    {
+            	    // InternalDatalog.g:490:4: ()
+            	    // InternalDatalog.g:491:5: 
+            	    {
+
+            	    					current = forceCreateModelElementAndSet(
+            	    						grammarAccess.getParamListAccess().getParamListLeftAction_1_0(),
+            	    						current);
+            	    				
+
+            	    }
+
+            	    otherlv_2=(Token)match(input,19,FOLLOW_11); 
+
+            	    				newLeafNode(otherlv_2, grammarAccess.getParamListAccess().getCommaKeyword_1_1());
+            	    			
+            	    // InternalDatalog.g:501:4: ( (lv_right_3_0= rulePrimary ) )
+            	    // InternalDatalog.g:502:5: (lv_right_3_0= rulePrimary )
+            	    {
+            	    // InternalDatalog.g:502:5: (lv_right_3_0= rulePrimary )
+            	    // InternalDatalog.g:503:6: lv_right_3_0= rulePrimary
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getParamListAccess().getRightPrimaryParserRuleCall_1_2_0());
+            	    					
+            	    pushFollow(FOLLOW_9);
+            	    lv_right_3_0=rulePrimary();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getParamListRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"right",
+            	    							lv_right_3_0,
+            	    							"org.xtext.mde.Datalog.Primary");
             	    						afterParserOrEnumRuleCall();
             	    					
 
@@ -1061,285 +1337,11 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleFormula"
-
-
-    // $ANTLR start "entryRuleAtom"
-    // InternalDatalog.g:407:1: entryRuleAtom returns [EObject current=null] : iv_ruleAtom= ruleAtom EOF ;
-    public final EObject entryRuleAtom() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleAtom = null;
-
-
-        try {
-            // InternalDatalog.g:407:45: (iv_ruleAtom= ruleAtom EOF )
-            // InternalDatalog.g:408:2: iv_ruleAtom= ruleAtom EOF
-            {
-             newCompositeNode(grammarAccess.getAtomRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleAtom=ruleAtom();
-
-            state._fsp--;
-
-             current =iv_ruleAtom; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleAtom"
-
-
-    // $ANTLR start "ruleAtom"
-    // InternalDatalog.g:414:1: ruleAtom returns [EObject current=null] : (this_ParameterPred_0= ruleParameterPred otherlv_1= '(' ( (lv_list_2_0= ruleParamList ) ) otherlv_3= ')' ) ;
-    public final EObject ruleAtom() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_1=null;
-        Token otherlv_3=null;
-        EObject this_ParameterPred_0 = null;
-
-        EObject lv_list_2_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalDatalog.g:420:2: ( (this_ParameterPred_0= ruleParameterPred otherlv_1= '(' ( (lv_list_2_0= ruleParamList ) ) otherlv_3= ')' ) )
-            // InternalDatalog.g:421:2: (this_ParameterPred_0= ruleParameterPred otherlv_1= '(' ( (lv_list_2_0= ruleParamList ) ) otherlv_3= ')' )
-            {
-            // InternalDatalog.g:421:2: (this_ParameterPred_0= ruleParameterPred otherlv_1= '(' ( (lv_list_2_0= ruleParamList ) ) otherlv_3= ')' )
-            // InternalDatalog.g:422:3: this_ParameterPred_0= ruleParameterPred otherlv_1= '(' ( (lv_list_2_0= ruleParamList ) ) otherlv_3= ')'
-            {
-
-            			newCompositeNode(grammarAccess.getAtomAccess().getParameterPredParserRuleCall_0());
-            		
-            pushFollow(FOLLOW_9);
-            this_ParameterPred_0=ruleParameterPred();
-
-            state._fsp--;
-
-
-            			current = this_ParameterPred_0;
-            			afterParserOrEnumRuleCall();
-            		
-            otherlv_1=(Token)match(input,19,FOLLOW_10); 
-
-            			newLeafNode(otherlv_1, grammarAccess.getAtomAccess().getLeftParenthesisKeyword_1());
-            		
-            // InternalDatalog.g:434:3: ( (lv_list_2_0= ruleParamList ) )
-            // InternalDatalog.g:435:4: (lv_list_2_0= ruleParamList )
-            {
-            // InternalDatalog.g:435:4: (lv_list_2_0= ruleParamList )
-            // InternalDatalog.g:436:5: lv_list_2_0= ruleParamList
-            {
-
-            					newCompositeNode(grammarAccess.getAtomAccess().getListParamListParserRuleCall_2_0());
-            				
-            pushFollow(FOLLOW_11);
-            lv_list_2_0=ruleParamList();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getAtomRule());
-            					}
-            					set(
-            						current,
-            						"list",
-            						lv_list_2_0,
-            						"org.xtext.mde.Datalog.ParamList");
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
-
-
-            }
-
-            otherlv_3=(Token)match(input,20,FOLLOW_2); 
-
-            			newLeafNode(otherlv_3, grammarAccess.getAtomAccess().getRightParenthesisKeyword_3());
-            		
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleAtom"
-
-
-    // $ANTLR start "entryRuleParamList"
-    // InternalDatalog.g:461:1: entryRuleParamList returns [EObject current=null] : iv_ruleParamList= ruleParamList EOF ;
-    public final EObject entryRuleParamList() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleParamList = null;
-
-
-        try {
-            // InternalDatalog.g:461:50: (iv_ruleParamList= ruleParamList EOF )
-            // InternalDatalog.g:462:2: iv_ruleParamList= ruleParamList EOF
-            {
-             newCompositeNode(grammarAccess.getParamListRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleParamList=ruleParamList();
-
-            state._fsp--;
-
-             current =iv_ruleParamList; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleParamList"
-
-
-    // $ANTLR start "ruleParamList"
-    // InternalDatalog.g:468:1: ruleParamList returns [EObject current=null] : (this_Primary_0= rulePrimary ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) ) ) ;
-    public final EObject ruleParamList() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_2=null;
-        EObject this_Primary_0 = null;
-
-        EObject lv_right_3_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalDatalog.g:474:2: ( (this_Primary_0= rulePrimary ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) ) ) )
-            // InternalDatalog.g:475:2: (this_Primary_0= rulePrimary ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) ) )
-            {
-            // InternalDatalog.g:475:2: (this_Primary_0= rulePrimary ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) ) )
-            // InternalDatalog.g:476:3: this_Primary_0= rulePrimary ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) )
-            {
-
-            			newCompositeNode(grammarAccess.getParamListAccess().getPrimaryParserRuleCall_0());
-            		
-            pushFollow(FOLLOW_12);
-            this_Primary_0=rulePrimary();
-
-            state._fsp--;
-
-
-            			current = this_Primary_0;
-            			afterParserOrEnumRuleCall();
-            		
-            // InternalDatalog.g:484:3: ( () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) ) )
-            // InternalDatalog.g:485:4: () otherlv_2= ',' ( (lv_right_3_0= rulePrimary ) )
-            {
-            // InternalDatalog.g:485:4: ()
-            // InternalDatalog.g:486:5: 
-            {
-
-            					current = forceCreateModelElementAndSet(
-            						grammarAccess.getParamListAccess().getParamListLeftAction_1_0(),
-            						current);
-            				
-
-            }
-
-            otherlv_2=(Token)match(input,18,FOLLOW_10); 
-
-            				newLeafNode(otherlv_2, grammarAccess.getParamListAccess().getCommaKeyword_1_1());
-            			
-            // InternalDatalog.g:496:4: ( (lv_right_3_0= rulePrimary ) )
-            // InternalDatalog.g:497:5: (lv_right_3_0= rulePrimary )
-            {
-            // InternalDatalog.g:497:5: (lv_right_3_0= rulePrimary )
-            // InternalDatalog.g:498:6: lv_right_3_0= rulePrimary
-            {
-
-            						newCompositeNode(grammarAccess.getParamListAccess().getRightPrimaryParserRuleCall_1_2_0());
-            					
-            pushFollow(FOLLOW_2);
-            lv_right_3_0=rulePrimary();
-
-            state._fsp--;
-
-
-            						if (current==null) {
-            							current = createModelElementForParent(grammarAccess.getParamListRule());
-            						}
-            						set(
-            							current,
-            							"right",
-            							lv_right_3_0,
-            							"org.xtext.mde.Datalog.Primary");
-            						afterParserOrEnumRuleCall();
-            					
-
-            }
-
-
-            }
-
-
-            }
-
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
     // $ANTLR end "ruleParamList"
 
 
     // $ANTLR start "entryRulePrimary"
-    // InternalDatalog.g:520:1: entryRulePrimary returns [EObject current=null] : iv_rulePrimary= rulePrimary EOF ;
+    // InternalDatalog.g:525:1: entryRulePrimary returns [EObject current=null] : iv_rulePrimary= rulePrimary EOF ;
     public final EObject entryRulePrimary() throws RecognitionException {
         EObject current = null;
 
@@ -1347,8 +1349,8 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDatalog.g:520:48: (iv_rulePrimary= rulePrimary EOF )
-            // InternalDatalog.g:521:2: iv_rulePrimary= rulePrimary EOF
+            // InternalDatalog.g:525:48: (iv_rulePrimary= rulePrimary EOF )
+            // InternalDatalog.g:526:2: iv_rulePrimary= rulePrimary EOF
             {
              newCompositeNode(grammarAccess.getPrimaryRule()); 
             pushFollow(FOLLOW_1);
@@ -1375,7 +1377,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimary"
-    // InternalDatalog.g:527:1: rulePrimary returns [EObject current=null] : (this_ParameterPred_0= ruleParameterPred | this_ParameterVar_1= ruleParameterVar | this_ParameterInt_2= ruleParameterInt ) ;
+    // InternalDatalog.g:532:1: rulePrimary returns [EObject current=null] : (this_ParameterPred_0= ruleParameterPred | this_ParameterVar_1= ruleParameterVar | this_ParameterInt_2= ruleParameterInt ) ;
     public final EObject rulePrimary() throws RecognitionException {
         EObject current = null;
 
@@ -1390,10 +1392,10 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDatalog.g:533:2: ( (this_ParameterPred_0= ruleParameterPred | this_ParameterVar_1= ruleParameterVar | this_ParameterInt_2= ruleParameterInt ) )
-            // InternalDatalog.g:534:2: (this_ParameterPred_0= ruleParameterPred | this_ParameterVar_1= ruleParameterVar | this_ParameterInt_2= ruleParameterInt )
+            // InternalDatalog.g:538:2: ( (this_ParameterPred_0= ruleParameterPred | this_ParameterVar_1= ruleParameterVar | this_ParameterInt_2= ruleParameterInt ) )
+            // InternalDatalog.g:539:2: (this_ParameterPred_0= ruleParameterPred | this_ParameterVar_1= ruleParameterVar | this_ParameterInt_2= ruleParameterInt )
             {
-            // InternalDatalog.g:534:2: (this_ParameterPred_0= ruleParameterPred | this_ParameterVar_1= ruleParameterVar | this_ParameterInt_2= ruleParameterInt )
+            // InternalDatalog.g:539:2: (this_ParameterPred_0= ruleParameterPred | this_ParameterVar_1= ruleParameterVar | this_ParameterInt_2= ruleParameterInt )
             int alt5=3;
             switch ( input.LA(1) ) {
             case RULE_PREDICATE:
@@ -1420,7 +1422,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
             switch (alt5) {
                 case 1 :
-                    // InternalDatalog.g:535:3: this_ParameterPred_0= ruleParameterPred
+                    // InternalDatalog.g:540:3: this_ParameterPred_0= ruleParameterPred
                     {
 
                     			newCompositeNode(grammarAccess.getPrimaryAccess().getParameterPredParserRuleCall_0());
@@ -1438,7 +1440,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDatalog.g:544:3: this_ParameterVar_1= ruleParameterVar
+                    // InternalDatalog.g:549:3: this_ParameterVar_1= ruleParameterVar
                     {
 
                     			newCompositeNode(grammarAccess.getPrimaryAccess().getParameterVarParserRuleCall_1());
@@ -1456,7 +1458,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalDatalog.g:553:3: this_ParameterInt_2= ruleParameterInt
+                    // InternalDatalog.g:558:3: this_ParameterInt_2= ruleParameterInt
                     {
 
                     			newCompositeNode(grammarAccess.getPrimaryAccess().getParameterIntParserRuleCall_2());
@@ -1496,7 +1498,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterInt"
-    // InternalDatalog.g:565:1: entryRuleParameterInt returns [EObject current=null] : iv_ruleParameterInt= ruleParameterInt EOF ;
+    // InternalDatalog.g:570:1: entryRuleParameterInt returns [EObject current=null] : iv_ruleParameterInt= ruleParameterInt EOF ;
     public final EObject entryRuleParameterInt() throws RecognitionException {
         EObject current = null;
 
@@ -1504,8 +1506,8 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDatalog.g:565:53: (iv_ruleParameterInt= ruleParameterInt EOF )
-            // InternalDatalog.g:566:2: iv_ruleParameterInt= ruleParameterInt EOF
+            // InternalDatalog.g:570:53: (iv_ruleParameterInt= ruleParameterInt EOF )
+            // InternalDatalog.g:571:2: iv_ruleParameterInt= ruleParameterInt EOF
             {
              newCompositeNode(grammarAccess.getParameterIntRule()); 
             pushFollow(FOLLOW_1);
@@ -1532,7 +1534,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterInt"
-    // InternalDatalog.g:572:1: ruleParameterInt returns [EObject current=null] : ( (lv_int_0_0= RULE_INT ) ) ;
+    // InternalDatalog.g:577:1: ruleParameterInt returns [EObject current=null] : ( (lv_int_0_0= RULE_INT ) ) ;
     public final EObject ruleParameterInt() throws RecognitionException {
         EObject current = null;
 
@@ -1542,14 +1544,14 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDatalog.g:578:2: ( ( (lv_int_0_0= RULE_INT ) ) )
-            // InternalDatalog.g:579:2: ( (lv_int_0_0= RULE_INT ) )
+            // InternalDatalog.g:583:2: ( ( (lv_int_0_0= RULE_INT ) ) )
+            // InternalDatalog.g:584:2: ( (lv_int_0_0= RULE_INT ) )
             {
-            // InternalDatalog.g:579:2: ( (lv_int_0_0= RULE_INT ) )
-            // InternalDatalog.g:580:3: (lv_int_0_0= RULE_INT )
+            // InternalDatalog.g:584:2: ( (lv_int_0_0= RULE_INT ) )
+            // InternalDatalog.g:585:3: (lv_int_0_0= RULE_INT )
             {
-            // InternalDatalog.g:580:3: (lv_int_0_0= RULE_INT )
-            // InternalDatalog.g:581:4: lv_int_0_0= RULE_INT
+            // InternalDatalog.g:585:3: (lv_int_0_0= RULE_INT )
+            // InternalDatalog.g:586:4: lv_int_0_0= RULE_INT
             {
             lv_int_0_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -1591,7 +1593,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterVar"
-    // InternalDatalog.g:600:1: entryRuleParameterVar returns [EObject current=null] : iv_ruleParameterVar= ruleParameterVar EOF ;
+    // InternalDatalog.g:605:1: entryRuleParameterVar returns [EObject current=null] : iv_ruleParameterVar= ruleParameterVar EOF ;
     public final EObject entryRuleParameterVar() throws RecognitionException {
         EObject current = null;
 
@@ -1599,8 +1601,8 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDatalog.g:600:53: (iv_ruleParameterVar= ruleParameterVar EOF )
-            // InternalDatalog.g:601:2: iv_ruleParameterVar= ruleParameterVar EOF
+            // InternalDatalog.g:605:53: (iv_ruleParameterVar= ruleParameterVar EOF )
+            // InternalDatalog.g:606:2: iv_ruleParameterVar= ruleParameterVar EOF
             {
              newCompositeNode(grammarAccess.getParameterVarRule()); 
             pushFollow(FOLLOW_1);
@@ -1627,7 +1629,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterVar"
-    // InternalDatalog.g:607:1: ruleParameterVar returns [EObject current=null] : ( (lv_up_0_0= RULE_VARIABLE ) ) ;
+    // InternalDatalog.g:612:1: ruleParameterVar returns [EObject current=null] : ( (lv_up_0_0= RULE_VARIABLE ) ) ;
     public final EObject ruleParameterVar() throws RecognitionException {
         EObject current = null;
 
@@ -1637,14 +1639,14 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDatalog.g:613:2: ( ( (lv_up_0_0= RULE_VARIABLE ) ) )
-            // InternalDatalog.g:614:2: ( (lv_up_0_0= RULE_VARIABLE ) )
+            // InternalDatalog.g:618:2: ( ( (lv_up_0_0= RULE_VARIABLE ) ) )
+            // InternalDatalog.g:619:2: ( (lv_up_0_0= RULE_VARIABLE ) )
             {
-            // InternalDatalog.g:614:2: ( (lv_up_0_0= RULE_VARIABLE ) )
-            // InternalDatalog.g:615:3: (lv_up_0_0= RULE_VARIABLE )
+            // InternalDatalog.g:619:2: ( (lv_up_0_0= RULE_VARIABLE ) )
+            // InternalDatalog.g:620:3: (lv_up_0_0= RULE_VARIABLE )
             {
-            // InternalDatalog.g:615:3: (lv_up_0_0= RULE_VARIABLE )
-            // InternalDatalog.g:616:4: lv_up_0_0= RULE_VARIABLE
+            // InternalDatalog.g:620:3: (lv_up_0_0= RULE_VARIABLE )
+            // InternalDatalog.g:621:4: lv_up_0_0= RULE_VARIABLE
             {
             lv_up_0_0=(Token)match(input,RULE_VARIABLE,FOLLOW_2); 
 
@@ -1686,7 +1688,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterPred"
-    // InternalDatalog.g:635:1: entryRuleParameterPred returns [EObject current=null] : iv_ruleParameterPred= ruleParameterPred EOF ;
+    // InternalDatalog.g:640:1: entryRuleParameterPred returns [EObject current=null] : iv_ruleParameterPred= ruleParameterPred EOF ;
     public final EObject entryRuleParameterPred() throws RecognitionException {
         EObject current = null;
 
@@ -1694,8 +1696,8 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDatalog.g:635:54: (iv_ruleParameterPred= ruleParameterPred EOF )
-            // InternalDatalog.g:636:2: iv_ruleParameterPred= ruleParameterPred EOF
+            // InternalDatalog.g:640:54: (iv_ruleParameterPred= ruleParameterPred EOF )
+            // InternalDatalog.g:641:2: iv_ruleParameterPred= ruleParameterPred EOF
             {
              newCompositeNode(grammarAccess.getParameterPredRule()); 
             pushFollow(FOLLOW_1);
@@ -1722,7 +1724,7 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterPred"
-    // InternalDatalog.g:642:1: ruleParameterPred returns [EObject current=null] : ( (lv_low_0_0= RULE_PREDICATE ) ) ;
+    // InternalDatalog.g:647:1: ruleParameterPred returns [EObject current=null] : ( (lv_low_0_0= RULE_PREDICATE ) ) ;
     public final EObject ruleParameterPred() throws RecognitionException {
         EObject current = null;
 
@@ -1732,14 +1734,14 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDatalog.g:648:2: ( ( (lv_low_0_0= RULE_PREDICATE ) ) )
-            // InternalDatalog.g:649:2: ( (lv_low_0_0= RULE_PREDICATE ) )
+            // InternalDatalog.g:653:2: ( ( (lv_low_0_0= RULE_PREDICATE ) ) )
+            // InternalDatalog.g:654:2: ( (lv_low_0_0= RULE_PREDICATE ) )
             {
-            // InternalDatalog.g:649:2: ( (lv_low_0_0= RULE_PREDICATE ) )
-            // InternalDatalog.g:650:3: (lv_low_0_0= RULE_PREDICATE )
+            // InternalDatalog.g:654:2: ( (lv_low_0_0= RULE_PREDICATE ) )
+            // InternalDatalog.g:655:3: (lv_low_0_0= RULE_PREDICATE )
             {
-            // InternalDatalog.g:650:3: (lv_low_0_0= RULE_PREDICATE )
-            // InternalDatalog.g:651:4: lv_low_0_0= RULE_PREDICATE
+            // InternalDatalog.g:655:3: (lv_low_0_0= RULE_PREDICATE )
+            // InternalDatalog.g:656:4: lv_low_0_0= RULE_PREDICATE
             {
             lv_low_0_0=(Token)match(input,RULE_PREDICATE,FOLLOW_2); 
 
@@ -1783,38 +1785,27 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
 
 
     protected DFA2 dfa2 = new DFA2(this);
-    static final String dfa_1s = "\33\uffff";
-    static final String dfa_2s = "\1\6\2\uffff\1\23\1\4\3\22\1\4\3\24\1\17\1\6\2\uffff\1\23\1\4\3\22\1\4\3\24\1\17\1\uffff";
-    static final String dfa_3s = "\1\16\2\uffff\1\23\1\6\3\22\1\6\3\24\1\22\1\6\2\uffff\1\23\1\6\3\22\1\6\3\24\1\22\1\uffff";
-    static final String dfa_4s = "\1\uffff\1\1\1\2\13\uffff\1\3\1\5\12\uffff\1\4";
-    static final String dfa_5s = "\33\uffff}>";
+    static final String dfa_1s = "\20\uffff";
+    static final String dfa_2s = "\1\7\2\uffff\1\24\1\uffff\1\5\3\23\1\5\1\21\3\23\2\uffff";
+    static final String dfa_3s = "\1\17\2\uffff\1\24\1\uffff\1\7\3\25\1\7\1\23\3\25\2\uffff";
+    static final String dfa_4s = "\1\uffff\1\1\1\2\1\uffff\1\5\11\uffff\1\3\1\4";
+    static final String dfa_5s = "\20\uffff}>";
     static final String[] dfa_6s = {
-            "\1\3\6\uffff\1\1\1\2",
+            "\1\3\5\uffff\1\1\1\2\1\4",
             "",
             "",
-            "\1\4",
-            "\1\7\1\6\1\5",
-            "\1\10",
-            "\1\10",
-            "\1\10",
-            "\1\13\1\12\1\11",
-            "\1\14",
-            "\1\14",
-            "\1\14",
-            "\1\17\2\16\1\15",
-            "\1\20",
+            "\1\5",
             "",
+            "\1\10\1\7\1\6",
+            "\1\11\1\uffff\1\12",
+            "\1\11\1\uffff\1\12",
+            "\1\11\1\uffff\1\12",
+            "\1\15\1\14\1\13",
+            "\1\16\2\17",
+            "\1\11\1\uffff\1\12",
+            "\1\11\1\uffff\1\12",
+            "\1\11\1\uffff\1\12",
             "",
-            "\1\21",
-            "\1\24\1\23\1\22",
-            "\1\25",
-            "\1\25",
-            "\1\25",
-            "\1\30\1\27\1\26",
-            "\1\31",
-            "\1\31",
-            "\1\31",
-            "\1\17\1\uffff\1\32\1\15",
             ""
     };
 
@@ -1839,22 +1830,22 @@ public class InternalDatalogParser extends AbstractInternalAntlrParser {
             this.transition = dfa_6;
         }
         public String getDescription() {
-            return "114:2: ( ( () rulePlus ) | ( () ruleMinus ) | this_Form_4= ruleForm | this_Param_5= ruleParam | this_Ask_6= ruleAsk )";
+            return "114:2: ( ( () rulePlus ) | ( () ruleMinus ) | this_Form_4= ruleForm | this_Assertion_5= ruleAssertion | this_Comment_6= ruleComment )";
         }
     }
  
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000006042L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000030000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000070L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x000000000000E082L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x00000000000000E0L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000200000L});
 
 }
