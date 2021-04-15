@@ -3,6 +3,7 @@ Datalog IDE for Model-driven Development
 Authors: Robert Ciochina K1888810
          Benjamin-Smith Jnr Bortey, 1528719
          
+  The version of Java used is 11.
  1. After pulling the project from GitHub, the folders datalog.xpect, datalogTest and runtime.datalog must be placed in the runtime version of eclipse. All the other folder will remain in the main window.
  2. In order to build the Artefact, open the folder org.xtext.datalog/src/org.xtext and right click on Datalog.xtext->Run As-> Generate Artefact. 
  3. Then right click on org.xtext.datalog-> Run As->Eclipse Application
