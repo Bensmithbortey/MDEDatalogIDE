@@ -10,7 +10,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.xtext.mde.datalog.Atom;
 import org.xtext.mde.datalog.DatalogPackage;
 import org.xtext.mde.datalog.Formula;
 
@@ -28,7 +30,7 @@ import org.xtext.mde.datalog.Formula;
  *
  * @generated
  */
-public class FormulaImpl extends AssertionImpl implements Formula
+public class FormulaImpl extends MinimalEObjectImpl.Container implements Formula
 {
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -48,7 +50,7 @@ public class FormulaImpl extends AssertionImpl implements Formula
    * @generated
    * @ordered
    */
-  protected Formula right;
+  protected Atom right;
 
   /**
    * <!-- begin-user-doc -->
@@ -127,7 +129,7 @@ public class FormulaImpl extends AssertionImpl implements Formula
    * @generated
    */
   @Override
-  public Formula getRight()
+  public Atom getRight()
   {
     return right;
   }
@@ -137,9 +139,9 @@ public class FormulaImpl extends AssertionImpl implements Formula
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRight(Formula newRight, NotificationChain msgs)
+  public NotificationChain basicSetRight(Atom newRight, NotificationChain msgs)
   {
-    Formula oldRight = right;
+    Atom oldRight = right;
     right = newRight;
     if (eNotificationRequired())
     {
@@ -155,7 +157,7 @@ public class FormulaImpl extends AssertionImpl implements Formula
    * @generated
    */
   @Override
-  public void setRight(Formula newRight)
+  public void setRight(Atom newRight)
   {
     if (newRight != right)
     {
@@ -221,7 +223,7 @@ public class FormulaImpl extends AssertionImpl implements Formula
         setLeft((Formula)newValue);
         return;
       case DatalogPackage.FORMULA__RIGHT:
-        setRight((Formula)newValue);
+        setRight((Atom)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -241,7 +243,7 @@ public class FormulaImpl extends AssertionImpl implements Formula
         setLeft((Formula)null);
         return;
       case DatalogPackage.FORMULA__RIGHT:
-        setRight((Formula)null);
+        setRight((Atom)null);
         return;
     }
     super.eUnset(featureID);

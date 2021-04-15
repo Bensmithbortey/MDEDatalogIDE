@@ -13,7 +13,6 @@ package org.xtext.mde.datalog;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mde.datalog.ParameterPred#getList <em>List</em>}</li>
  *   <li>{@link org.xtext.mde.datalog.ParameterPred#getLow <em>Low</em>}</li>
  * </ul>
  *
@@ -21,30 +20,8 @@ package org.xtext.mde.datalog;
  * @model
  * @generated
  */
-public interface ParameterPred extends Atom, Par
+public interface ParameterPred extends Par
 {
-  /**
-   * Returns the value of the '<em><b>List</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>List</em>' containment reference.
-   * @see #setList(Par)
-   * @see org.xtext.mde.datalog.DatalogPackage#getParameterPred_List()
-   * @model containment="true"
-   * @generated
-   */
-  Par getList();
-
-  /**
-   * Sets the value of the '{@link org.xtext.mde.datalog.ParameterPred#getList <em>List</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>List</em>' containment reference.
-   * @see #getList()
-   * @generated
-   */
-  void setList(Par value);
-
   /**
    * Returns the value of the '<em><b>Low</b></em>' attribute.
    * <!-- begin-user-doc -->

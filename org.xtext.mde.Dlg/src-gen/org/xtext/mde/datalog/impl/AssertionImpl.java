@@ -3,20 +3,43 @@
  */
 package org.xtext.mde.datalog.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.mde.datalog.Assertion;
 import org.xtext.mde.datalog.DatalogPackage;
+import org.xtext.mde.datalog.Formula;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Assertion</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.mde.datalog.impl.AssertionImpl#getTruth <em>Truth</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class AssertionImpl extends StatementsImpl implements Assertion
 {
+  /**
+   * The cached value of the '{@link #getTruth() <em>Truth</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTruth()
+   * @generated
+   * @ordered
+   */
+  protected Formula truth;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -36,6 +59,138 @@ public class AssertionImpl extends StatementsImpl implements Assertion
   protected EClass eStaticClass()
   {
     return DatalogPackage.Literals.ASSERTION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Formula getTruth()
+  {
+    return truth;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTruth(Formula newTruth, NotificationChain msgs)
+  {
+    Formula oldTruth = truth;
+    truth = newTruth;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DatalogPackage.ASSERTION__TRUTH, oldTruth, newTruth);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTruth(Formula newTruth)
+  {
+    if (newTruth != truth)
+    {
+      NotificationChain msgs = null;
+      if (truth != null)
+        msgs = ((InternalEObject)truth).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.ASSERTION__TRUTH, null, msgs);
+      if (newTruth != null)
+        msgs = ((InternalEObject)newTruth).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.ASSERTION__TRUTH, null, msgs);
+      msgs = basicSetTruth(newTruth, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatalogPackage.ASSERTION__TRUTH, newTruth, newTruth));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DatalogPackage.ASSERTION__TRUTH:
+        return basicSetTruth(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case DatalogPackage.ASSERTION__TRUTH:
+        return getTruth();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case DatalogPackage.ASSERTION__TRUTH:
+        setTruth((Formula)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case DatalogPackage.ASSERTION__TRUTH:
+        setTruth((Formula)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case DatalogPackage.ASSERTION__TRUTH:
+        return truth != null;
+    }
+    return super.eIsSet(featureID);
   }
 
 } //AssertionImpl

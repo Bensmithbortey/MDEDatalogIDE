@@ -12,10 +12,9 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.xtext.mde.datalog.Assertion;
 import org.xtext.mde.datalog.Atom;
-import org.xtext.mde.datalog.Comment;
+import org.xtext.mde.datalog.Conditions;
 import org.xtext.mde.datalog.DatalogFactory;
 import org.xtext.mde.datalog.DatalogPackage;
-import org.xtext.mde.datalog.Form;
 import org.xtext.mde.datalog.Formula;
 import org.xtext.mde.datalog.Model;
 import org.xtext.mde.datalog.Par;
@@ -52,14 +51,7 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass commentEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass formEClass = null;
+  private EClass conditionsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -219,9 +211,9 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
    * @generated
    */
   @Override
-  public EClass getComment()
+  public EClass getConditions()
   {
-    return commentEClass;
+    return conditionsEClass;
   }
 
   /**
@@ -230,9 +222,9 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
    * @generated
    */
   @Override
-  public EAttribute getComment_Text()
+  public EReference getConditions_Cond()
   {
-    return (EAttribute)commentEClass.getEStructuralFeatures().get(0);
+    return (EReference)conditionsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -241,9 +233,9 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
    * @generated
    */
   @Override
-  public EClass getForm()
+  public EReference getConditions_Right()
   {
-    return formEClass;
+    return (EReference)conditionsEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -255,6 +247,17 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
   public EClass getAssertion()
   {
     return assertionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAssertion_Truth()
+  {
+    return (EReference)assertionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -299,6 +302,28 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
   public EClass getAtom()
   {
     return atomEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAtom_Name()
+  {
+    return (EReference)atomEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAtom_List()
+  {
+    return (EReference)atomEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -373,20 +398,9 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
    * @generated
    */
   @Override
-  public EReference getParameterPred_List()
-  {
-    return (EReference)parameterPredEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EAttribute getParameterPred_Low()
   {
-    return (EAttribute)parameterPredEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)parameterPredEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -458,18 +472,20 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
 
     statementsEClass = createEClass(STATEMENTS);
 
-    commentEClass = createEClass(COMMENT);
-    createEAttribute(commentEClass, COMMENT__TEXT);
-
-    formEClass = createEClass(FORM);
+    conditionsEClass = createEClass(CONDITIONS);
+    createEReference(conditionsEClass, CONDITIONS__COND);
+    createEReference(conditionsEClass, CONDITIONS__RIGHT);
 
     assertionEClass = createEClass(ASSERTION);
+    createEReference(assertionEClass, ASSERTION__TRUTH);
 
     formulaEClass = createEClass(FORMULA);
     createEReference(formulaEClass, FORMULA__LEFT);
     createEReference(formulaEClass, FORMULA__RIGHT);
 
     atomEClass = createEClass(ATOM);
+    createEReference(atomEClass, ATOM__NAME);
+    createEReference(atomEClass, ATOM__LIST);
 
     parEClass = createEClass(PAR);
 
@@ -480,7 +496,6 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
     createEAttribute(parameterVarEClass, PARAMETER_VAR__UP);
 
     parameterPredEClass = createEClass(PARAMETER_PRED);
-    createEReference(parameterPredEClass, PARAMETER_PRED__LIST);
     createEAttribute(parameterPredEClass, PARAMETER_PRED__LOW);
 
     paramListEClass = createEClass(PARAM_LIST);
@@ -517,15 +532,11 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    commentEClass.getESuperTypes().add(this.getStatements());
-    formEClass.getESuperTypes().add(this.getStatements());
+    conditionsEClass.getESuperTypes().add(this.getStatements());
     assertionEClass.getESuperTypes().add(this.getStatements());
-    formulaEClass.getESuperTypes().add(this.getAssertion());
-    atomEClass.getESuperTypes().add(this.getForm());
     atomEClass.getESuperTypes().add(this.getFormula());
     parameterIntEClass.getESuperTypes().add(this.getPar());
     parameterVarEClass.getESuperTypes().add(this.getPar());
-    parameterPredEClass.getESuperTypes().add(this.getAtom());
     parameterPredEClass.getESuperTypes().add(this.getPar());
     paramListEClass.getESuperTypes().add(this.getPar());
 
@@ -535,18 +546,20 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
 
     initEClass(statementsEClass, Statements.class, "Statements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(commentEClass, Comment.class, "Comment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getComment_Text(), ecorePackage.getEString(), "text", null, 0, 1, Comment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(formEClass, Form.class, "Form", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(conditionsEClass, Conditions.class, "Conditions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConditions_Cond(), this.getAtom(), null, "Cond", null, 0, 1, Conditions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditions_Right(), this.getFormula(), null, "right", null, 0, 1, Conditions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(assertionEClass, Assertion.class, "Assertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssertion_Truth(), this.getFormula(), null, "Truth", null, 0, 1, Assertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(formulaEClass, Formula.class, "Formula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFormula_Left(), this.getFormula(), null, "left", null, 0, 1, Formula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFormula_Right(), this.getFormula(), null, "right", null, 0, 1, Formula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFormula_Right(), this.getAtom(), null, "right", null, 0, 1, Formula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(atomEClass, Atom.class, "Atom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAtom_Name(), this.getParameterPred(), null, "name", null, 0, 1, Atom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAtom_List(), this.getPar(), null, "list", null, 0, 1, Atom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parEClass, Par.class, "Par", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -557,7 +570,6 @@ public class DatalogPackageImpl extends EPackageImpl implements DatalogPackage
     initEAttribute(getParameterVar_Up(), ecorePackage.getEString(), "up", null, 0, 1, ParameterVar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parameterPredEClass, ParameterPred.class, "ParameterPred", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getParameterPred_List(), this.getPar(), null, "list", null, 0, 1, ParameterPred.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getParameterPred_Low(), ecorePackage.getEString(), "low", null, 0, 1, ParameterPred.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(paramListEClass, ParamList.class, "ParamList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

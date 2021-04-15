@@ -67,8 +67,7 @@ public class DatalogFactoryImpl extends EFactoryImpl implements DatalogFactory
     {
       case DatalogPackage.MODEL: return createModel();
       case DatalogPackage.STATEMENTS: return createStatements();
-      case DatalogPackage.COMMENT: return createComment();
-      case DatalogPackage.FORM: return createForm();
+      case DatalogPackage.CONDITIONS: return createConditions();
       case DatalogPackage.ASSERTION: return createAssertion();
       case DatalogPackage.FORMULA: return createFormula();
       case DatalogPackage.ATOM: return createAtom();
@@ -112,22 +111,10 @@ public class DatalogFactoryImpl extends EFactoryImpl implements DatalogFactory
    * @generated
    */
   @Override
-  public Comment createComment()
+  public Conditions createConditions()
   {
-    CommentImpl comment = new CommentImpl();
-    return comment;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Form createForm()
-  {
-    FormImpl form = new FormImpl();
-    return form;
+    ConditionsImpl conditions = new ConditionsImpl();
+    return conditions;
   }
 
   /**

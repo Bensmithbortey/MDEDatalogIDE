@@ -105,51 +105,41 @@ public interface DatalogPackage extends EPackage
   int STATEMENTS_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link org.xtext.mde.datalog.impl.CommentImpl <em>Comment</em>}' class.
+   * The meta object id for the '{@link org.xtext.mde.datalog.impl.ConditionsImpl <em>Conditions</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.mde.datalog.impl.CommentImpl
-   * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getComment()
+   * @see org.xtext.mde.datalog.impl.ConditionsImpl
+   * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getConditions()
    * @generated
    */
-  int COMMENT = 2;
+  int CONDITIONS = 2;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' attribute.
+   * The feature id for the '<em><b>Cond</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMMENT__TEXT = STATEMENTS_FEATURE_COUNT + 0;
+  int CONDITIONS__COND = STATEMENTS_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Comment</em>' class.
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMMENT_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 1;
+  int CONDITIONS__RIGHT = STATEMENTS_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.mde.datalog.impl.FormImpl <em>Form</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.mde.datalog.impl.FormImpl
-   * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getForm()
-   * @generated
-   */
-  int FORM = 3;
-
-  /**
-   * The number of structural features of the '<em>Form</em>' class.
+   * The number of structural features of the '<em>Conditions</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 0;
+  int CONDITIONS_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.mde.datalog.impl.AssertionImpl <em>Assertion</em>}' class.
@@ -159,7 +149,16 @@ public interface DatalogPackage extends EPackage
    * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getAssertion()
    * @generated
    */
-  int ASSERTION = 4;
+  int ASSERTION = 3;
+
+  /**
+   * The feature id for the '<em><b>Truth</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSERTION__TRUTH = STATEMENTS_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Assertion</em>' class.
@@ -168,7 +167,7 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ASSERTION_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 0;
+  int ASSERTION_FEATURE_COUNT = STATEMENTS_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xtext.mde.datalog.impl.FormulaImpl <em>Formula</em>}' class.
@@ -178,7 +177,7 @@ public interface DatalogPackage extends EPackage
    * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getFormula()
    * @generated
    */
-  int FORMULA = 5;
+  int FORMULA = 4;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -187,7 +186,7 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORMULA__LEFT = ASSERTION_FEATURE_COUNT + 0;
+  int FORMULA__LEFT = 0;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -196,7 +195,7 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORMULA__RIGHT = ASSERTION_FEATURE_COUNT + 1;
+  int FORMULA__RIGHT = 1;
 
   /**
    * The number of structural features of the '<em>Formula</em>' class.
@@ -205,7 +204,7 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORMULA_FEATURE_COUNT = ASSERTION_FEATURE_COUNT + 2;
+  int FORMULA_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.mde.datalog.impl.AtomImpl <em>Atom</em>}' class.
@@ -215,7 +214,7 @@ public interface DatalogPackage extends EPackage
    * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getAtom()
    * @generated
    */
-  int ATOM = 6;
+  int ATOM = 5;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -224,7 +223,7 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATOM__LEFT = FORM_FEATURE_COUNT + 0;
+  int ATOM__LEFT = FORMULA__LEFT;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -233,7 +232,25 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATOM__RIGHT = FORM_FEATURE_COUNT + 1;
+  int ATOM__RIGHT = FORMULA__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATOM__NAME = FORMULA_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>List</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATOM__LIST = FORMULA_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Atom</em>' class.
@@ -242,7 +259,7 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATOM_FEATURE_COUNT = FORM_FEATURE_COUNT + 2;
+  int ATOM_FEATURE_COUNT = FORMULA_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.mde.datalog.impl.ParImpl <em>Par</em>}' class.
@@ -252,7 +269,7 @@ public interface DatalogPackage extends EPackage
    * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getPar()
    * @generated
    */
-  int PAR = 7;
+  int PAR = 6;
 
   /**
    * The number of structural features of the '<em>Par</em>' class.
@@ -271,7 +288,7 @@ public interface DatalogPackage extends EPackage
    * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getParameterInt()
    * @generated
    */
-  int PARAMETER_INT = 8;
+  int PARAMETER_INT = 7;
 
   /**
    * The feature id for the '<em><b>Int</b></em>' attribute.
@@ -299,7 +316,7 @@ public interface DatalogPackage extends EPackage
    * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getParameterVar()
    * @generated
    */
-  int PARAMETER_VAR = 9;
+  int PARAMETER_VAR = 8;
 
   /**
    * The feature id for the '<em><b>Up</b></em>' attribute.
@@ -327,34 +344,7 @@ public interface DatalogPackage extends EPackage
    * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getParameterPred()
    * @generated
    */
-  int PARAMETER_PRED = 10;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMETER_PRED__LEFT = ATOM__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMETER_PRED__RIGHT = ATOM__RIGHT;
-
-  /**
-   * The feature id for the '<em><b>List</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMETER_PRED__LIST = ATOM_FEATURE_COUNT + 0;
+  int PARAMETER_PRED = 9;
 
   /**
    * The feature id for the '<em><b>Low</b></em>' attribute.
@@ -363,7 +353,7 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARAMETER_PRED__LOW = ATOM_FEATURE_COUNT + 1;
+  int PARAMETER_PRED__LOW = PAR_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Parameter Pred</em>' class.
@@ -372,7 +362,7 @@ public interface DatalogPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARAMETER_PRED_FEATURE_COUNT = ATOM_FEATURE_COUNT + 2;
+  int PARAMETER_PRED_FEATURE_COUNT = PAR_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xtext.mde.datalog.impl.ParamListImpl <em>Param List</em>}' class.
@@ -382,7 +372,7 @@ public interface DatalogPackage extends EPackage
    * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getParamList()
    * @generated
    */
-  int PARAM_LIST = 11;
+  int PARAM_LIST = 10;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -444,35 +434,36 @@ public interface DatalogPackage extends EPackage
   EClass getStatements();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.mde.datalog.Comment <em>Comment</em>}'.
+   * Returns the meta object for class '{@link org.xtext.mde.datalog.Conditions <em>Conditions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Comment</em>'.
-   * @see org.xtext.mde.datalog.Comment
+   * @return the meta object for class '<em>Conditions</em>'.
+   * @see org.xtext.mde.datalog.Conditions
    * @generated
    */
-  EClass getComment();
+  EClass getConditions();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.mde.datalog.Comment#getText <em>Text</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.mde.datalog.Conditions#getCond <em>Cond</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Text</em>'.
-   * @see org.xtext.mde.datalog.Comment#getText()
-   * @see #getComment()
+   * @return the meta object for the containment reference '<em>Cond</em>'.
+   * @see org.xtext.mde.datalog.Conditions#getCond()
+   * @see #getConditions()
    * @generated
    */
-  EAttribute getComment_Text();
+  EReference getConditions_Cond();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.mde.datalog.Form <em>Form</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.mde.datalog.Conditions#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Form</em>'.
-   * @see org.xtext.mde.datalog.Form
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see org.xtext.mde.datalog.Conditions#getRight()
+   * @see #getConditions()
    * @generated
    */
-  EClass getForm();
+  EReference getConditions_Right();
 
   /**
    * Returns the meta object for class '{@link org.xtext.mde.datalog.Assertion <em>Assertion</em>}'.
@@ -483,6 +474,17 @@ public interface DatalogPackage extends EPackage
    * @generated
    */
   EClass getAssertion();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mde.datalog.Assertion#getTruth <em>Truth</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Truth</em>'.
+   * @see org.xtext.mde.datalog.Assertion#getTruth()
+   * @see #getAssertion()
+   * @generated
+   */
+  EReference getAssertion_Truth();
 
   /**
    * Returns the meta object for class '{@link org.xtext.mde.datalog.Formula <em>Formula</em>}'.
@@ -525,6 +527,28 @@ public interface DatalogPackage extends EPackage
    * @generated
    */
   EClass getAtom();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mde.datalog.Atom#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @see org.xtext.mde.datalog.Atom#getName()
+   * @see #getAtom()
+   * @generated
+   */
+  EReference getAtom_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mde.datalog.Atom#getList <em>List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>List</em>'.
+   * @see org.xtext.mde.datalog.Atom#getList()
+   * @see #getAtom()
+   * @generated
+   */
+  EReference getAtom_List();
 
   /**
    * Returns the meta object for class '{@link org.xtext.mde.datalog.Par <em>Par</em>}'.
@@ -587,17 +611,6 @@ public interface DatalogPackage extends EPackage
    * @generated
    */
   EClass getParameterPred();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.mde.datalog.ParameterPred#getList <em>List</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>List</em>'.
-   * @see org.xtext.mde.datalog.ParameterPred#getList()
-   * @see #getParameterPred()
-   * @generated
-   */
-  EReference getParameterPred_List();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.mde.datalog.ParameterPred#getLow <em>Low</em>}'.
@@ -694,32 +707,30 @@ public interface DatalogPackage extends EPackage
     EClass STATEMENTS = eINSTANCE.getStatements();
 
     /**
-     * The meta object literal for the '{@link org.xtext.mde.datalog.impl.CommentImpl <em>Comment</em>}' class.
+     * The meta object literal for the '{@link org.xtext.mde.datalog.impl.ConditionsImpl <em>Conditions</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.mde.datalog.impl.CommentImpl
-     * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getComment()
+     * @see org.xtext.mde.datalog.impl.ConditionsImpl
+     * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getConditions()
      * @generated
      */
-    EClass COMMENT = eINSTANCE.getComment();
+    EClass CONDITIONS = eINSTANCE.getConditions();
 
     /**
-     * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cond</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMMENT__TEXT = eINSTANCE.getComment_Text();
+    EReference CONDITIONS__COND = eINSTANCE.getConditions_Cond();
 
     /**
-     * The meta object literal for the '{@link org.xtext.mde.datalog.impl.FormImpl <em>Form</em>}' class.
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.mde.datalog.impl.FormImpl
-     * @see org.xtext.mde.datalog.impl.DatalogPackageImpl#getForm()
      * @generated
      */
-    EClass FORM = eINSTANCE.getForm();
+    EReference CONDITIONS__RIGHT = eINSTANCE.getConditions_Right();
 
     /**
      * The meta object literal for the '{@link org.xtext.mde.datalog.impl.AssertionImpl <em>Assertion</em>}' class.
@@ -730,6 +741,14 @@ public interface DatalogPackage extends EPackage
      * @generated
      */
     EClass ASSERTION = eINSTANCE.getAssertion();
+
+    /**
+     * The meta object literal for the '<em><b>Truth</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSERTION__TRUTH = eINSTANCE.getAssertion_Truth();
 
     /**
      * The meta object literal for the '{@link org.xtext.mde.datalog.impl.FormulaImpl <em>Formula</em>}' class.
@@ -766,6 +785,22 @@ public interface DatalogPackage extends EPackage
      * @generated
      */
     EClass ATOM = eINSTANCE.getAtom();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ATOM__NAME = eINSTANCE.getAtom_Name();
+
+    /**
+     * The meta object literal for the '<em><b>List</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ATOM__LIST = eINSTANCE.getAtom_List();
 
     /**
      * The meta object literal for the '{@link org.xtext.mde.datalog.impl.ParImpl <em>Par</em>}' class.
@@ -822,14 +857,6 @@ public interface DatalogPackage extends EPackage
      * @generated
      */
     EClass PARAMETER_PRED = eINSTANCE.getParameterPred();
-
-    /**
-     * The meta object literal for the '<em><b>List</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PARAMETER_PRED__LIST = eINSTANCE.getParameterPred_List();
 
     /**
      * The meta object literal for the '<em><b>Low</b></em>' attribute feature.

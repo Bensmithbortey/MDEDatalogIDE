@@ -4,15 +4,12 @@
 package org.xtext.mde.datalog.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.mde.datalog.DatalogPackage;
-import org.xtext.mde.datalog.Par;
 import org.xtext.mde.datalog.ParameterPred;
 
 /**
@@ -23,24 +20,13 @@ import org.xtext.mde.datalog.ParameterPred;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mde.datalog.impl.ParameterPredImpl#getList <em>List</em>}</li>
  *   <li>{@link org.xtext.mde.datalog.impl.ParameterPredImpl#getLow <em>Low</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ParameterPredImpl extends AtomImpl implements ParameterPred
+public class ParameterPredImpl extends ParImpl implements ParameterPred
 {
-  /**
-   * The cached value of the '{@link #getList() <em>List</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getList()
-   * @generated
-   * @ordered
-   */
-  protected Par list;
-
   /**
    * The default value of the '{@link #getLow() <em>Low</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -88,56 +74,6 @@ public class ParameterPredImpl extends AtomImpl implements ParameterPred
    * @generated
    */
   @Override
-  public Par getList()
-  {
-    return list;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetList(Par newList, NotificationChain msgs)
-  {
-    Par oldList = list;
-    list = newList;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DatalogPackage.PARAMETER_PRED__LIST, oldList, newList);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setList(Par newList)
-  {
-    if (newList != list)
-    {
-      NotificationChain msgs = null;
-      if (list != null)
-        msgs = ((InternalEObject)list).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.PARAMETER_PRED__LIST, null, msgs);
-      if (newList != null)
-        msgs = ((InternalEObject)newList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.PARAMETER_PRED__LIST, null, msgs);
-      msgs = basicSetList(newList, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DatalogPackage.PARAMETER_PRED__LIST, newList, newList));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public String getLow()
   {
     return low;
@@ -163,28 +99,10 @@ public class ParameterPredImpl extends AtomImpl implements ParameterPred
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case DatalogPackage.PARAMETER_PRED__LIST:
-        return basicSetList(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case DatalogPackage.PARAMETER_PRED__LIST:
-        return getList();
       case DatalogPackage.PARAMETER_PRED__LOW:
         return getLow();
     }
@@ -201,9 +119,6 @@ public class ParameterPredImpl extends AtomImpl implements ParameterPred
   {
     switch (featureID)
     {
-      case DatalogPackage.PARAMETER_PRED__LIST:
-        setList((Par)newValue);
-        return;
       case DatalogPackage.PARAMETER_PRED__LOW:
         setLow((String)newValue);
         return;
@@ -221,9 +136,6 @@ public class ParameterPredImpl extends AtomImpl implements ParameterPred
   {
     switch (featureID)
     {
-      case DatalogPackage.PARAMETER_PRED__LIST:
-        setList((Par)null);
-        return;
       case DatalogPackage.PARAMETER_PRED__LOW:
         setLow(LOW_EDEFAULT);
         return;
@@ -241,8 +153,6 @@ public class ParameterPredImpl extends AtomImpl implements ParameterPred
   {
     switch (featureID)
     {
-      case DatalogPackage.PARAMETER_PRED__LIST:
-        return list != null;
       case DatalogPackage.PARAMETER_PRED__LOW:
         return LOW_EDEFAULT == null ? low != null : !LOW_EDEFAULT.equals(low);
     }

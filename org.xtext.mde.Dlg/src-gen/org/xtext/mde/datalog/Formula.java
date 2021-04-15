@@ -3,6 +3,7 @@
  */
 package org.xtext.mde.datalog;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +22,7 @@ package org.xtext.mde.datalog;
  * @model
  * @generated
  */
-public interface Formula extends Assertion
+public interface Formula extends EObject
 {
   /**
    * Returns the value of the '<em><b>Left</b></em>' containment reference.
@@ -50,12 +51,12 @@ public interface Formula extends Assertion
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' containment reference.
-   * @see #setRight(Formula)
+   * @see #setRight(Atom)
    * @see org.xtext.mde.datalog.DatalogPackage#getFormula_Right()
    * @model containment="true"
    * @generated
    */
-  Formula getRight();
+  Atom getRight();
 
   /**
    * Sets the value of the '{@link org.xtext.mde.datalog.Formula#getRight <em>Right</em>}' containment reference.
@@ -65,6 +66,6 @@ public interface Formula extends Assertion
    * @see #getRight()
    * @generated
    */
-  void setRight(Formula value);
+  void setRight(Atom value);
 
 } // Formula

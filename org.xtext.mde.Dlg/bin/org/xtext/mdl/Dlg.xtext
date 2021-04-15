@@ -6,27 +6,27 @@ Model:
 	Program += Statements*;
 
 Statements:
-	{Statements} Plus  | {Statements} Minus | Form | Assertion | Comment
+	{Statements} PlusSign  | {Statements} MinusSign | Conditions | Assertion | {Statements} Com
 ;
 
-Plus:
+PlusSign:
 	'+'
 ;
 
-Minus:
+MinusSign:
 	'-'
 ;
 
-Comment:
-	'/*' text = ID '*/'
+Com:
+	'/*' -> '*/'
 ;
 
-Form:
-	Atom ':-' right = Formula '.'
+Conditions:
+	Cond = Atom ':-' right = Formula '.'
 ;
 
 Assertion:
-	Formula '.'
+	Truth = Formula '.'
 ;
 
 Formula:
@@ -34,7 +34,7 @@ Formula:
 ;
 
 Atom:
-	ParameterPred '(' list = ParamList ')'
+	name = ParameterPred '(' list = ParamList ')'
 ;
 
 ParamList returns Par:

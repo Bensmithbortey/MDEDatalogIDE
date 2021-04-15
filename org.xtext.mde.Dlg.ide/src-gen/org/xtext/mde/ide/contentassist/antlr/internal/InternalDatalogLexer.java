@@ -22,12 +22,12 @@ public class InternalDatalogLexer extends Lexer {
     public static final int T__13=13;
     public static final int T__14=14;
     public static final int EOF=-1;
-    public static final int RULE_ID=4;
+    public static final int RULE_ID=7;
     public static final int RULE_WS=11;
-    public static final int RULE_VARIABLE=6;
+    public static final int RULE_VARIABLE=5;
     public static final int RULE_ANY_OTHER=12;
-    public static final int RULE_INT=5;
-    public static final int RULE_PREDICATE=7;
+    public static final int RULE_INT=4;
+    public static final int RULE_PREDICATE=6;
     public static final int RULE_ML_COMMENT=9;
     public static final int T__20=20;
     public static final int T__21=21;
@@ -233,11 +233,11 @@ public class InternalDatalogLexer extends Lexer {
         try {
             int _type = RULE_PREDICATE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDatalog.g:1332:16: ( 'a' .. 'z' ( 'a' .. 'z' | '0' .. '9' | 'A' .. 'Z' | '_' )* )
-            // InternalDatalog.g:1332:18: 'a' .. 'z' ( 'a' .. 'z' | '0' .. '9' | 'A' .. 'Z' | '_' )*
+            // InternalDatalog.g:1390:16: ( 'a' .. 'z' ( 'a' .. 'z' | '0' .. '9' | 'A' .. 'Z' | '_' )* )
+            // InternalDatalog.g:1390:18: 'a' .. 'z' ( 'a' .. 'z' | '0' .. '9' | 'A' .. 'Z' | '_' )*
             {
             matchRange('a','z'); 
-            // InternalDatalog.g:1332:27: ( 'a' .. 'z' | '0' .. '9' | 'A' .. 'Z' | '_' )*
+            // InternalDatalog.g:1390:27: ( 'a' .. 'z' | '0' .. '9' | 'A' .. 'Z' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -286,11 +286,11 @@ public class InternalDatalogLexer extends Lexer {
         try {
             int _type = RULE_VARIABLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDatalog.g:1334:15: ( 'A' .. 'Z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )* )
-            // InternalDatalog.g:1334:17: 'A' .. 'Z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )*
+            // InternalDatalog.g:1392:15: ( 'A' .. 'Z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )* )
+            // InternalDatalog.g:1392:17: 'A' .. 'Z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )*
             {
             matchRange('A','Z'); 
-            // InternalDatalog.g:1334:26: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )*
+            // InternalDatalog.g:1392:26: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )*
             loop2:
             do {
                 int alt2=2;
@@ -339,10 +339,10 @@ public class InternalDatalogLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDatalog.g:1336:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalDatalog.g:1336:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalDatalog.g:1394:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalDatalog.g:1394:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalDatalog.g:1336:11: ( '^' )?
+            // InternalDatalog.g:1394:11: ( '^' )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -351,7 +351,7 @@ public class InternalDatalogLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // InternalDatalog.g:1336:11: '^'
+                    // InternalDatalog.g:1394:11: '^'
                     {
                     match('^'); 
 
@@ -369,7 +369,7 @@ public class InternalDatalogLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalDatalog.g:1336:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalDatalog.g:1394:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop4:
             do {
                 int alt4=2;
@@ -418,10 +418,10 @@ public class InternalDatalogLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDatalog.g:1338:10: ( ( '0' .. '9' )+ )
-            // InternalDatalog.g:1338:12: ( '0' .. '9' )+
+            // InternalDatalog.g:1396:10: ( ( '0' .. '9' )+ )
+            // InternalDatalog.g:1396:12: ( '0' .. '9' )+
             {
-            // InternalDatalog.g:1338:12: ( '0' .. '9' )+
+            // InternalDatalog.g:1396:12: ( '0' .. '9' )+
             int cnt5=0;
             loop5:
             do {
@@ -435,7 +435,7 @@ public class InternalDatalogLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // InternalDatalog.g:1338:13: '0' .. '9'
+            	    // InternalDatalog.g:1396:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -467,10 +467,10 @@ public class InternalDatalogLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDatalog.g:1340:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalDatalog.g:1340:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalDatalog.g:1398:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalDatalog.g:1398:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalDatalog.g:1340:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalDatalog.g:1398:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -488,10 +488,10 @@ public class InternalDatalogLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // InternalDatalog.g:1340:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalDatalog.g:1398:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalDatalog.g:1340:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalDatalog.g:1398:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -507,7 +507,7 @@ public class InternalDatalogLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // InternalDatalog.g:1340:21: '\\\\' .
+                    	    // InternalDatalog.g:1398:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -515,7 +515,7 @@ public class InternalDatalogLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalDatalog.g:1340:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalDatalog.g:1398:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -540,10 +540,10 @@ public class InternalDatalogLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalDatalog.g:1340:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalDatalog.g:1398:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalDatalog.g:1340:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalDatalog.g:1398:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop7:
                     do {
                         int alt7=3;
@@ -559,7 +559,7 @@ public class InternalDatalogLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // InternalDatalog.g:1340:54: '\\\\' .
+                    	    // InternalDatalog.g:1398:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -567,7 +567,7 @@ public class InternalDatalogLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalDatalog.g:1340:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalDatalog.g:1398:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -610,12 +610,12 @@ public class InternalDatalogLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDatalog.g:1342:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalDatalog.g:1342:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalDatalog.g:1400:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalDatalog.g:1400:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalDatalog.g:1342:24: ( options {greedy=false; } : . )*
+            // InternalDatalog.g:1400:24: ( options {greedy=false; } : . )*
             loop9:
             do {
                 int alt9=2;
@@ -640,7 +640,7 @@ public class InternalDatalogLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalDatalog.g:1342:52: .
+            	    // InternalDatalog.g:1400:52: .
             	    {
             	    matchAny(); 
 
@@ -670,12 +670,12 @@ public class InternalDatalogLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDatalog.g:1344:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalDatalog.g:1344:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalDatalog.g:1402:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalDatalog.g:1402:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalDatalog.g:1344:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalDatalog.g:1402:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop10:
             do {
                 int alt10=2;
@@ -688,7 +688,7 @@ public class InternalDatalogLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // InternalDatalog.g:1344:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalDatalog.g:1402:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -708,7 +708,7 @@ public class InternalDatalogLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalDatalog.g:1344:40: ( ( '\\r' )? '\\n' )?
+            // InternalDatalog.g:1402:40: ( ( '\\r' )? '\\n' )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -717,9 +717,9 @@ public class InternalDatalogLexer extends Lexer {
             }
             switch (alt12) {
                 case 1 :
-                    // InternalDatalog.g:1344:41: ( '\\r' )? '\\n'
+                    // InternalDatalog.g:1402:41: ( '\\r' )? '\\n'
                     {
-                    // InternalDatalog.g:1344:41: ( '\\r' )?
+                    // InternalDatalog.g:1402:41: ( '\\r' )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -728,7 +728,7 @@ public class InternalDatalogLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // InternalDatalog.g:1344:41: '\\r'
+                            // InternalDatalog.g:1402:41: '\\r'
                             {
                             match('\r'); 
 
@@ -760,10 +760,10 @@ public class InternalDatalogLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDatalog.g:1346:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalDatalog.g:1346:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalDatalog.g:1404:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalDatalog.g:1404:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalDatalog.g:1346:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalDatalog.g:1404:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt13=0;
             loop13:
             do {
@@ -817,8 +817,8 @@ public class InternalDatalogLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDatalog.g:1348:16: ( . )
-            // InternalDatalog.g:1348:18: .
+            // InternalDatalog.g:1406:16: ( . )
+            // InternalDatalog.g:1406:18: .
             {
             matchAny(); 
 

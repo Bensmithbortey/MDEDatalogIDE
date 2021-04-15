@@ -42,22 +42,13 @@ public interface DatalogFactory extends EFactory
   Statements createStatements();
 
   /**
-   * Returns a new object of class '<em>Comment</em>'.
+   * Returns a new object of class '<em>Conditions</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Comment</em>'.
+   * @return a new object of class '<em>Conditions</em>'.
    * @generated
    */
-  Comment createComment();
-
-  /**
-   * Returns a new object of class '<em>Form</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Form</em>'.
-   * @generated
-   */
-  Form createForm();
+  Conditions createConditions();
 
   /**
    * Returns a new object of class '<em>Assertion</em>'.

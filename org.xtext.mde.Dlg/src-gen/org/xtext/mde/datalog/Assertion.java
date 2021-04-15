@@ -9,6 +9,12 @@ package org.xtext.mde.datalog;
  * A representation of the model object '<em><b>Assertion</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.mde.datalog.Assertion#getTruth <em>Truth</em>}</li>
+ * </ul>
  *
  * @see org.xtext.mde.datalog.DatalogPackage#getAssertion()
  * @model
@@ -16,4 +22,26 @@ package org.xtext.mde.datalog;
  */
 public interface Assertion extends Statements
 {
+  /**
+   * Returns the value of the '<em><b>Truth</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Truth</em>' containment reference.
+   * @see #setTruth(Formula)
+   * @see org.xtext.mde.datalog.DatalogPackage#getAssertion_Truth()
+   * @model containment="true"
+   * @generated
+   */
+  Formula getTruth();
+
+  /**
+   * Sets the value of the '{@link org.xtext.mde.datalog.Assertion#getTruth <em>Truth</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Truth</em>' containment reference.
+   * @see #getTruth()
+   * @generated
+   */
+  void setTruth(Formula value);
+
 } // Assertion

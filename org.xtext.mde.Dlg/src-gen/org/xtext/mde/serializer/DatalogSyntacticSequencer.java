@@ -21,40 +21,53 @@ import org.xtext.mde.services.DatalogGrammarAccess;
 public class DatalogSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DatalogGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Statements_MinusParserRuleCall_1_1_or_PlusParserRuleCall_0_1;
+	protected AbstractElementAlias match_Statements_ComParserRuleCall_4_1_or_MinusSignParserRuleCall_1_1_or_PlusSignParserRuleCall_0_1;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DatalogGrammarAccess) access;
-		match_Statements_MinusParserRuleCall_1_1_or_PlusParserRuleCall_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getStatementsAccess().getMinusParserRuleCall_1_1()), new TokenAlias(false, false, grammarAccess.getStatementsAccess().getPlusParserRuleCall_0_1()));
+		match_Statements_ComParserRuleCall_4_1_or_MinusSignParserRuleCall_1_1_or_PlusSignParserRuleCall_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getStatementsAccess().getComParserRuleCall_4_1()), new TokenAlias(false, false, grammarAccess.getStatementsAccess().getMinusSignParserRuleCall_1_1()), new TokenAlias(false, false, grammarAccess.getStatementsAccess().getPlusSignParserRuleCall_0_1()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getMinusRule())
-			return getMinusToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getPlusRule())
-			return getPlusToken(semanticObject, ruleCall, node);
+		if (ruleCall.getRule() == grammarAccess.getComRule())
+			return getComToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getMinusSignRule())
+			return getMinusSignToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getPlusSignRule())
+			return getPlusSignToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
 	/**
-	 * Minus:
+	 * Com:
+	 * 	'/*' -> '*&#47;'
+	 * ;
+	 */
+	protected String getComToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "/* */";
+	}
+	
+	/**
+	 * MinusSign:
 	 * 	'-'
 	 * ;
 	 */
-	protected String getMinusToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+	protected String getMinusSignToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "-";
 	}
 	
 	/**
-	 * Plus:
+	 * PlusSign:
 	 * 	'+'
 	 * ;
 	 */
-	protected String getPlusToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+	protected String getPlusSignToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "+";
@@ -66,20 +79,20 @@ public class DatalogSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Statements_MinusParserRuleCall_1_1_or_PlusParserRuleCall_0_1.equals(syntax))
-				emit_Statements_MinusParserRuleCall_1_1_or_PlusParserRuleCall_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_Statements_ComParserRuleCall_4_1_or_MinusSignParserRuleCall_1_1_or_PlusSignParserRuleCall_0_1.equals(syntax))
+				emit_Statements_ComParserRuleCall_4_1_or_MinusSignParserRuleCall_1_1_or_PlusSignParserRuleCall_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
 	/**
 	 * Ambiguous syntax:
-	 *     Plus | Minus
+	 *     PlusSign | MinusSign | Com
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) (ambiguity) (rule start)
 	 */
-	protected void emit_Statements_MinusParserRuleCall_1_1_or_PlusParserRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Statements_ComParserRuleCall_4_1_or_MinusSignParserRuleCall_1_1_or_PlusSignParserRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

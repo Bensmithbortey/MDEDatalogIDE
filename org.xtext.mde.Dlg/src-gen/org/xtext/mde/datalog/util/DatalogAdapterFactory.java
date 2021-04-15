@@ -86,14 +86,9 @@ public class DatalogAdapterFactory extends AdapterFactoryImpl
         return createStatementsAdapter();
       }
       @Override
-      public Adapter caseComment(Comment object)
+      public Adapter caseConditions(Conditions object)
       {
-        return createCommentAdapter();
-      }
-      @Override
-      public Adapter caseForm(Form object)
-      {
-        return createFormAdapter();
+        return createConditionsAdapter();
       }
       @Override
       public Adapter caseAssertion(Assertion object)
@@ -188,31 +183,16 @@ public class DatalogAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mde.datalog.Comment <em>Comment</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.mde.datalog.Conditions <em>Conditions</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.mde.datalog.Comment
+   * @see org.xtext.mde.datalog.Conditions
    * @generated
    */
-  public Adapter createCommentAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mde.datalog.Form <em>Form</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.mde.datalog.Form
-   * @generated
-   */
-  public Adapter createFormAdapter()
+  public Adapter createConditionsAdapter()
   {
     return null;
   }

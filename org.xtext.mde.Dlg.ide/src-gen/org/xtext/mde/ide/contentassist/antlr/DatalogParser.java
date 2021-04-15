@@ -35,8 +35,9 @@ public class DatalogParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPrimaryAccess().getAlternatives(), "rule__Primary__Alternatives");
 			builder.put(grammarAccess.getStatementsAccess().getGroup_0(), "rule__Statements__Group_0__0");
 			builder.put(grammarAccess.getStatementsAccess().getGroup_1(), "rule__Statements__Group_1__0");
-			builder.put(grammarAccess.getCommentAccess().getGroup(), "rule__Comment__Group__0");
-			builder.put(grammarAccess.getFormAccess().getGroup(), "rule__Form__Group__0");
+			builder.put(grammarAccess.getStatementsAccess().getGroup_4(), "rule__Statements__Group_4__0");
+			builder.put(grammarAccess.getComAccess().getGroup(), "rule__Com__Group__0");
+			builder.put(grammarAccess.getConditionsAccess().getGroup(), "rule__Conditions__Group__0");
 			builder.put(grammarAccess.getAssertionAccess().getGroup(), "rule__Assertion__Group__0");
 			builder.put(grammarAccess.getFormulaAccess().getGroup(), "rule__Formula__Group__0");
 			builder.put(grammarAccess.getFormulaAccess().getGroup_1(), "rule__Formula__Group_1__0");
@@ -44,9 +45,11 @@ public class DatalogParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getParamListAccess().getGroup(), "rule__ParamList__Group__0");
 			builder.put(grammarAccess.getParamListAccess().getGroup_1(), "rule__ParamList__Group_1__0");
 			builder.put(grammarAccess.getModelAccess().getProgramAssignment(), "rule__Model__ProgramAssignment");
-			builder.put(grammarAccess.getCommentAccess().getTextAssignment_1(), "rule__Comment__TextAssignment_1");
-			builder.put(grammarAccess.getFormAccess().getRightAssignment_2(), "rule__Form__RightAssignment_2");
+			builder.put(grammarAccess.getConditionsAccess().getCondAssignment_0(), "rule__Conditions__CondAssignment_0");
+			builder.put(grammarAccess.getConditionsAccess().getRightAssignment_2(), "rule__Conditions__RightAssignment_2");
+			builder.put(grammarAccess.getAssertionAccess().getTruthAssignment_0(), "rule__Assertion__TruthAssignment_0");
 			builder.put(grammarAccess.getFormulaAccess().getRightAssignment_1_2(), "rule__Formula__RightAssignment_1_2");
+			builder.put(grammarAccess.getAtomAccess().getNameAssignment_0(), "rule__Atom__NameAssignment_0");
 			builder.put(grammarAccess.getAtomAccess().getListAssignment_2(), "rule__Atom__ListAssignment_2");
 			builder.put(grammarAccess.getParamListAccess().getRightAssignment_1_2(), "rule__ParamList__RightAssignment_1_2");
 			builder.put(grammarAccess.getParameterIntAccess().getIntAssignment(), "rule__ParameterInt__IntAssignment");

@@ -14,7 +14,9 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.xtext.mde.datalog.Comment;
+import org.xtext.mde.datalog.Assertion;
+import org.xtext.mde.datalog.Atom;
+import org.xtext.mde.datalog.Conditions;
 import org.xtext.mde.datalog.DatalogPackage;
 import org.xtext.mde.datalog.Formula;
 import org.xtext.mde.datalog.Model;
@@ -39,8 +41,14 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == DatalogPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case DatalogPackage.COMMENT:
-				sequence_Comment(context, (Comment) semanticObject); 
+			case DatalogPackage.ASSERTION:
+				sequence_Assertion(context, (Assertion) semanticObject); 
+				return; 
+			case DatalogPackage.ATOM:
+				sequence_Atom(context, (Atom) semanticObject); 
+				return; 
+			case DatalogPackage.CONDITIONS:
+				sequence_Conditions(context, (Conditions) semanticObject); 
 				return; 
 			case DatalogPackage.FORMULA:
 				sequence_Formula(context, (Formula) semanticObject); 
@@ -55,29 +63,8 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 				sequence_ParameterInt(context, (ParameterInt) semanticObject); 
 				return; 
 			case DatalogPackage.PARAMETER_PRED:
-				if (rule == grammarAccess.getStatementsRule()) {
-					sequence_Atom_Form_ParameterPred(context, (ParameterPred) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getFormRule()) {
-					sequence_Atom_Form_ParameterPred(context, (ParameterPred) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getAssertionRule()
-						|| rule == grammarAccess.getFormulaRule()
-						|| action == grammarAccess.getFormulaAccess().getFormulaLeftAction_1_0()
-						|| rule == grammarAccess.getAtomRule()) {
-					sequence_Atom_ParameterPred(context, (ParameterPred) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getParamListRule()
-						|| action == grammarAccess.getParamListAccess().getParamListLeftAction_1_0()
-						|| rule == grammarAccess.getPrimaryRule()
-						|| rule == grammarAccess.getParameterPredRule()) {
-					sequence_ParameterPred(context, (ParameterPred) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_ParameterPred(context, (ParameterPred) semanticObject); 
+				return; 
 			case DatalogPackage.PARAMETER_VAR:
 				sequence_ParameterVar(context, (ParameterVar) semanticObject); 
 				return; 
@@ -91,47 +78,41 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
-	 *     Statements returns ParameterPred
+	 *     Statements returns Assertion
+	 *     Assertion returns Assertion
 	 *
 	 * Constraint:
-	 *     (low=PREDICATE list=ParamList right=Formula?)
+	 *     Truth=Formula
 	 */
-	protected void sequence_Atom_Form_ParameterPred(ISerializationContext context, ParameterPred semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_Assertion(ISerializationContext context, Assertion semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DatalogPackage.Literals.ASSERTION__TRUTH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DatalogPackage.Literals.ASSERTION__TRUTH));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAssertionAccess().getTruthFormulaParserRuleCall_0_0(), semanticObject.getTruth());
+		feeder.finish();
 	}
 	
 	
-	// This method is commented out because it has the same signature as another method in this class.
-	// This is probably a bug in Xtext's serializer, please report it here: 
-	// https://bugs.eclipse.org/bugs/enter_bug.cgi?product=TMF
-	//
-	// Contexts:
-	//     Form returns ParameterPred
-	//
-	// Constraint:
-	//     (low=PREDICATE list=ParamList right=Formula)
-	//
-	// protected void sequence_Atom_Form_ParameterPred(ISerializationContext context, ParameterPred semanticObject) { }
-	
 	/**
 	 * Contexts:
-	 *     Assertion returns ParameterPred
-	 *     Formula returns ParameterPred
-	 *     Formula.Formula_1_0 returns ParameterPred
-	 *     Atom returns ParameterPred
+	 *     Formula returns Atom
+	 *     Formula.Formula_1_0 returns Atom
+	 *     Atom returns Atom
 	 *
 	 * Constraint:
-	 *     (low=PREDICATE list=ParamList)
+	 *     (name=ParameterPred list=ParamList)
 	 */
-	protected void sequence_Atom_ParameterPred(ISerializationContext context, ParameterPred semanticObject) {
+	protected void sequence_Atom(ISerializationContext context, Atom semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DatalogPackage.Literals.PARAMETER_PRED__LOW) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DatalogPackage.Literals.PARAMETER_PRED__LOW));
-			if (transientValues.isValueTransient(semanticObject, DatalogPackage.Literals.PARAMETER_PRED__LIST) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DatalogPackage.Literals.PARAMETER_PRED__LIST));
+			if (transientValues.isValueTransient(semanticObject, DatalogPackage.Literals.ATOM__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DatalogPackage.Literals.ATOM__NAME));
+			if (transientValues.isValueTransient(semanticObject, DatalogPackage.Literals.ATOM__LIST) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DatalogPackage.Literals.ATOM__LIST));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getParameterPredAccess().getLowPREDICATETerminalRuleCall_0(), semanticObject.getLow());
+		feeder.accept(grammarAccess.getAtomAccess().getNameParameterPredParserRuleCall_0_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getAtomAccess().getListParamListParserRuleCall_2_0(), semanticObject.getList());
 		feeder.finish();
 	}
@@ -139,27 +120,28 @@ public class DatalogSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
-	 *     Statements returns Comment
-	 *     Comment returns Comment
+	 *     Statements returns Conditions
+	 *     Conditions returns Conditions
 	 *
 	 * Constraint:
-	 *     text=ID
+	 *     (Cond=Atom right=Formula)
 	 */
-	protected void sequence_Comment(ISerializationContext context, Comment semanticObject) {
+	protected void sequence_Conditions(ISerializationContext context, Conditions semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DatalogPackage.Literals.COMMENT__TEXT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DatalogPackage.Literals.COMMENT__TEXT));
+			if (transientValues.isValueTransient(semanticObject, DatalogPackage.Literals.CONDITIONS__COND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DatalogPackage.Literals.CONDITIONS__COND));
+			if (transientValues.isValueTransient(semanticObject, DatalogPackage.Literals.CONDITIONS__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DatalogPackage.Literals.CONDITIONS__RIGHT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCommentAccess().getTextIDTerminalRuleCall_1_0(), semanticObject.getText());
+		feeder.accept(grammarAccess.getConditionsAccess().getCondAtomParserRuleCall_0_0(), semanticObject.getCond());
+		feeder.accept(grammarAccess.getConditionsAccess().getRightFormulaParserRuleCall_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Statements returns Formula
-	 *     Assertion returns Formula
 	 *     Formula returns Formula
 	 *     Formula.Formula_1_0 returns Formula
 	 *

@@ -1,0 +1,54 @@
+grammar org.xtext.mde.Datalog with org.eclipse.xtext.common.Terminals
+
+generate datalog "http://www.xtext.org/mde/Datalog"
+
+Model:
+	Program += StmtPlusMinus*;
+
+StmtPlusMinus:
+	left = StmtPlus right = StmtMinus
+;
+
+StmtPlus:
+	plus = "+" ({StmtPlus.left = current} rightPlus = Statements)+
+;
+
+StmtMinus:
+	minus = "-" ({StmtMinus.left = current} rightMinus = AssertionMinus)*
+;
+
+Statements:
+	condition = Conditions | assertion = Assertion
+;
+
+Conditions:
+	Cond = Atom Sign = ':-' right = FormulaC dot = '.'
+;
+
+Assertion:
+	Truth = Atom dot = '.'
+;
+
+AssertionMinus:
+	Check = FormulaC dot = '.'
+;
+
+FormulaC:
+	First = AtomC ({Formula.left=current} comma = ',' right=AtomC)*
+;
+	
+Atom:
+	name = ID lp = '(' list = ParamList rp = ')'
+;
+
+AtomC:
+	name = [Atom] lp = '(' list = ParamList rp = ')'
+;
+
+ParamList returns Par:
+	left=Primary ({ParamList.left=current} comma = ',' right=Primary)*
+;
+
+Primary returns Par:
+	value = ID
+; 

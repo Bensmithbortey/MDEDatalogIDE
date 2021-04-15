@@ -6,18 +6,26 @@
         eType="#//Statements" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statements"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Comment" eSuperTypes="#//Statements">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Form" eSuperTypes="#//Statements"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Assertion" eSuperTypes="#//Statements"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Formula" eSuperTypes="#//Assertion">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Formula"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Conditions" eSuperTypes="#//Statements">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Cond" eType="#//Atom" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Formula"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Atom" eSuperTypes="#//Form #//Formula"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Assertion" eSuperTypes="#//Statements">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Truth" eType="#//Formula"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Formula">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Formula"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Atom"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Atom" eSuperTypes="#//Formula">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//ParameterPred"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="list" eType="#//Par" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Par"/>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterInt" eSuperTypes="#//Par">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="int" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -25,8 +33,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ParameterVar" eSuperTypes="#//Par">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="up" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterPred" eSuperTypes="#//Atom #//Par">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="list" eType="#//Par" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterPred" eSuperTypes="#//Par">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="low" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParamList" eSuperTypes="#//Par">

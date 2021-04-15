@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.xtext.mde.datalog.Assertion;
 import org.xtext.mde.datalog.Atom;
 import org.xtext.mde.datalog.DatalogPackage;
-import org.xtext.mde.datalog.Formula;
+import org.xtext.mde.datalog.Par;
+import org.xtext.mde.datalog.ParameterPred;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,33 +24,33 @@ import org.xtext.mde.datalog.Formula;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mde.datalog.impl.AtomImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link org.xtext.mde.datalog.impl.AtomImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link org.xtext.mde.datalog.impl.AtomImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.mde.datalog.impl.AtomImpl#getList <em>List</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AtomImpl extends FormImpl implements Atom
+public class AtomImpl extends FormulaImpl implements Atom
 {
   /**
-   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
+   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLeft()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected Formula left;
+  protected ParameterPred name;
 
   /**
-   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
+   * The cached value of the '{@link #getList() <em>List</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRight()
+   * @see #getList()
    * @generated
    * @ordered
    */
-  protected Formula right;
+  protected Par list;
 
   /**
    * <!-- begin-user-doc -->
@@ -79,9 +79,9 @@ public class AtomImpl extends FormImpl implements Atom
    * @generated
    */
   @Override
-  public Formula getLeft()
+  public ParameterPred getName()
   {
-    return left;
+    return name;
   }
 
   /**
@@ -89,13 +89,13 @@ public class AtomImpl extends FormImpl implements Atom
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLeft(Formula newLeft, NotificationChain msgs)
+  public NotificationChain basicSetName(ParameterPred newName, NotificationChain msgs)
   {
-    Formula oldLeft = left;
-    left = newLeft;
+    ParameterPred oldName = name;
+    name = newName;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DatalogPackage.ATOM__LEFT, oldLeft, newLeft);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DatalogPackage.ATOM__NAME, oldName, newName);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -107,20 +107,20 @@ public class AtomImpl extends FormImpl implements Atom
    * @generated
    */
   @Override
-  public void setLeft(Formula newLeft)
+  public void setName(ParameterPred newName)
   {
-    if (newLeft != left)
+    if (newName != name)
     {
       NotificationChain msgs = null;
-      if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.ATOM__LEFT, null, msgs);
-      if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.ATOM__LEFT, null, msgs);
-      msgs = basicSetLeft(newLeft, msgs);
+      if (name != null)
+        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.ATOM__NAME, null, msgs);
+      if (newName != null)
+        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.ATOM__NAME, null, msgs);
+      msgs = basicSetName(newName, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DatalogPackage.ATOM__LEFT, newLeft, newLeft));
+      eNotify(new ENotificationImpl(this, Notification.SET, DatalogPackage.ATOM__NAME, newName, newName));
   }
 
   /**
@@ -129,9 +129,9 @@ public class AtomImpl extends FormImpl implements Atom
    * @generated
    */
   @Override
-  public Formula getRight()
+  public Par getList()
   {
-    return right;
+    return list;
   }
 
   /**
@@ -139,13 +139,13 @@ public class AtomImpl extends FormImpl implements Atom
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRight(Formula newRight, NotificationChain msgs)
+  public NotificationChain basicSetList(Par newList, NotificationChain msgs)
   {
-    Formula oldRight = right;
-    right = newRight;
+    Par oldList = list;
+    list = newList;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DatalogPackage.ATOM__RIGHT, oldRight, newRight);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DatalogPackage.ATOM__LIST, oldList, newList);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -157,20 +157,20 @@ public class AtomImpl extends FormImpl implements Atom
    * @generated
    */
   @Override
-  public void setRight(Formula newRight)
+  public void setList(Par newList)
   {
-    if (newRight != right)
+    if (newList != list)
     {
       NotificationChain msgs = null;
-      if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.ATOM__RIGHT, null, msgs);
-      if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.ATOM__RIGHT, null, msgs);
-      msgs = basicSetRight(newRight, msgs);
+      if (list != null)
+        msgs = ((InternalEObject)list).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.ATOM__LIST, null, msgs);
+      if (newList != null)
+        msgs = ((InternalEObject)newList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DatalogPackage.ATOM__LIST, null, msgs);
+      msgs = basicSetList(newList, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DatalogPackage.ATOM__RIGHT, newRight, newRight));
+      eNotify(new ENotificationImpl(this, Notification.SET, DatalogPackage.ATOM__LIST, newList, newList));
   }
 
   /**
@@ -183,10 +183,10 @@ public class AtomImpl extends FormImpl implements Atom
   {
     switch (featureID)
     {
-      case DatalogPackage.ATOM__LEFT:
-        return basicSetLeft(null, msgs);
-      case DatalogPackage.ATOM__RIGHT:
-        return basicSetRight(null, msgs);
+      case DatalogPackage.ATOM__NAME:
+        return basicSetName(null, msgs);
+      case DatalogPackage.ATOM__LIST:
+        return basicSetList(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -201,10 +201,10 @@ public class AtomImpl extends FormImpl implements Atom
   {
     switch (featureID)
     {
-      case DatalogPackage.ATOM__LEFT:
-        return getLeft();
-      case DatalogPackage.ATOM__RIGHT:
-        return getRight();
+      case DatalogPackage.ATOM__NAME:
+        return getName();
+      case DatalogPackage.ATOM__LIST:
+        return getList();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -219,11 +219,11 @@ public class AtomImpl extends FormImpl implements Atom
   {
     switch (featureID)
     {
-      case DatalogPackage.ATOM__LEFT:
-        setLeft((Formula)newValue);
+      case DatalogPackage.ATOM__NAME:
+        setName((ParameterPred)newValue);
         return;
-      case DatalogPackage.ATOM__RIGHT:
-        setRight((Formula)newValue);
+      case DatalogPackage.ATOM__LIST:
+        setList((Par)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -239,11 +239,11 @@ public class AtomImpl extends FormImpl implements Atom
   {
     switch (featureID)
     {
-      case DatalogPackage.ATOM__LEFT:
-        setLeft((Formula)null);
+      case DatalogPackage.ATOM__NAME:
+        setName((ParameterPred)null);
         return;
-      case DatalogPackage.ATOM__RIGHT:
-        setRight((Formula)null);
+      case DatalogPackage.ATOM__LIST:
+        setList((Par)null);
         return;
     }
     super.eUnset(featureID);
@@ -259,66 +259,12 @@ public class AtomImpl extends FormImpl implements Atom
   {
     switch (featureID)
     {
-      case DatalogPackage.ATOM__LEFT:
-        return left != null;
-      case DatalogPackage.ATOM__RIGHT:
-        return right != null;
+      case DatalogPackage.ATOM__NAME:
+        return name != null;
+      case DatalogPackage.ATOM__LIST:
+        return list != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Assertion.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == Formula.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case DatalogPackage.ATOM__LEFT: return DatalogPackage.FORMULA__LEFT;
-        case DatalogPackage.ATOM__RIGHT: return DatalogPackage.FORMULA__RIGHT;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Assertion.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == Formula.class)
-    {
-      switch (baseFeatureID)
-      {
-        case DatalogPackage.FORMULA__LEFT: return DatalogPackage.ATOM__LEFT;
-        case DatalogPackage.FORMULA__RIGHT: return DatalogPackage.ATOM__RIGHT;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
 } //AtomImpl

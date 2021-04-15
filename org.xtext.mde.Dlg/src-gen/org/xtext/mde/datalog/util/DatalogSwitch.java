@@ -87,19 +87,11 @@ public class DatalogSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DatalogPackage.COMMENT:
+      case DatalogPackage.CONDITIONS:
       {
-        Comment comment = (Comment)theEObject;
-        T result = caseComment(comment);
-        if (result == null) result = caseStatements(comment);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DatalogPackage.FORM:
-      {
-        Form form = (Form)theEObject;
-        T result = caseForm(form);
-        if (result == null) result = caseStatements(form);
+        Conditions conditions = (Conditions)theEObject;
+        T result = caseConditions(conditions);
+        if (result == null) result = caseStatements(conditions);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -115,8 +107,6 @@ public class DatalogSwitch<T> extends Switch<T>
       {
         Formula formula = (Formula)theEObject;
         T result = caseFormula(formula);
-        if (result == null) result = caseAssertion(formula);
-        if (result == null) result = caseStatements(formula);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -124,10 +114,7 @@ public class DatalogSwitch<T> extends Switch<T>
       {
         Atom atom = (Atom)theEObject;
         T result = caseAtom(atom);
-        if (result == null) result = caseForm(atom);
         if (result == null) result = caseFormula(atom);
-        if (result == null) result = caseAssertion(atom);
-        if (result == null) result = caseStatements(atom);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -158,12 +145,7 @@ public class DatalogSwitch<T> extends Switch<T>
       {
         ParameterPred parameterPred = (ParameterPred)theEObject;
         T result = caseParameterPred(parameterPred);
-        if (result == null) result = caseAtom(parameterPred);
         if (result == null) result = casePar(parameterPred);
-        if (result == null) result = caseForm(parameterPred);
-        if (result == null) result = caseFormula(parameterPred);
-        if (result == null) result = caseAssertion(parameterPred);
-        if (result == null) result = caseStatements(parameterPred);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -212,33 +194,17 @@ public class DatalogSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Comment</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Conditions</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Comment</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Conditions</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseComment(Comment object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Form</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Form</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseForm(Form object)
+  public T caseConditions(Conditions object)
   {
     return null;
   }

@@ -43,115 +43,119 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cStatementsAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final RuleCall cPlusParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final RuleCall cPlusSignParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cStatementsAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final RuleCall cMinusParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
-		private final RuleCall cFormParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cMinusSignParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final RuleCall cConditionsParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cAssertionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cCommentParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cStatementsAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final RuleCall cComParserRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
 		
 		//Statements:
-		//	{Statements} Plus | {Statements} Minus | Form | Assertion | Comment;
+		//	{Statements} PlusSign | {Statements} MinusSign | Conditions | Assertion | {Statements} Com;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Statements} Plus | {Statements} Minus | Form | Assertion | Comment
+		//{Statements} PlusSign | {Statements} MinusSign | Conditions | Assertion | {Statements} Com
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{Statements} Plus
+		//{Statements} PlusSign
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//{Statements}
 		public Action getStatementsAction_0_0() { return cStatementsAction_0_0; }
 		
-		//Plus
-		public RuleCall getPlusParserRuleCall_0_1() { return cPlusParserRuleCall_0_1; }
+		//PlusSign
+		public RuleCall getPlusSignParserRuleCall_0_1() { return cPlusSignParserRuleCall_0_1; }
 		
-		//{Statements} Minus
+		//{Statements} MinusSign
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{Statements}
 		public Action getStatementsAction_1_0() { return cStatementsAction_1_0; }
 		
-		//Minus
-		public RuleCall getMinusParserRuleCall_1_1() { return cMinusParserRuleCall_1_1; }
+		//MinusSign
+		public RuleCall getMinusSignParserRuleCall_1_1() { return cMinusSignParserRuleCall_1_1; }
 		
-		//Form
-		public RuleCall getFormParserRuleCall_2() { return cFormParserRuleCall_2; }
+		//Conditions
+		public RuleCall getConditionsParserRuleCall_2() { return cConditionsParserRuleCall_2; }
 		
 		//Assertion
 		public RuleCall getAssertionParserRuleCall_3() { return cAssertionParserRuleCall_3; }
 		
-		//Comment
-		public RuleCall getCommentParserRuleCall_4() { return cCommentParserRuleCall_4; }
+		//{Statements} Com
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//{Statements}
+		public Action getStatementsAction_4_0() { return cStatementsAction_4_0; }
+		
+		//Com
+		public RuleCall getComParserRuleCall_4_1() { return cComParserRuleCall_4_1; }
 	}
-	public class PlusElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Plus");
+	public class PlusSignElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.PlusSign");
 		private final Keyword cPlusSignKeyword = (Keyword)rule.eContents().get(1);
 		
-		//Plus:
+		//PlusSign:
 		//	'+';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'+'
 		public Keyword getPlusSignKeyword() { return cPlusSignKeyword; }
 	}
-	public class MinusElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Minus");
+	public class MinusSignElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.MinusSign");
 		private final Keyword cHyphenMinusKeyword = (Keyword)rule.eContents().get(1);
 		
-		//Minus:
+		//MinusSign:
 		//	'-';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'-'
 		public Keyword getHyphenMinusKeyword() { return cHyphenMinusKeyword; }
 	}
-	public class CommentElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Comment");
+	public class ComElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Com");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSolidusAsteriskKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTextAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTextIDTerminalRuleCall_1_0 = (RuleCall)cTextAssignment_1.eContents().get(0);
-		private final Keyword cAsteriskSolidusKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cAsteriskSolidusKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
-		//Comment:
-		//	'/*' text=ID '*/';
+		//Com:
+		//	'/*' -> '*/';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'/*' text=ID '*/'
+		//'/*' -> '*/'
 		public Group getGroup() { return cGroup; }
 		
 		//'/*'
 		public Keyword getSolidusAsteriskKeyword_0() { return cSolidusAsteriskKeyword_0; }
 		
-		//text=ID
-		public Assignment getTextAssignment_1() { return cTextAssignment_1; }
-		
-		//ID
-		public RuleCall getTextIDTerminalRuleCall_1_0() { return cTextIDTerminalRuleCall_1_0; }
-		
-		//'*/'
-		public Keyword getAsteriskSolidusKeyword_2() { return cAsteriskSolidusKeyword_2; }
+		//-> '*/'
+		public Keyword getAsteriskSolidusKeyword_1() { return cAsteriskSolidusKeyword_1; }
 	}
-	public class FormElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Form");
+	public class ConditionsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Conditions");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cAtomParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cCondAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cCondAtomParserRuleCall_0_0 = (RuleCall)cCondAssignment_0.eContents().get(0);
 		private final Keyword cColonHyphenMinusKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cRightAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cRightFormulaParserRuleCall_2_0 = (RuleCall)cRightAssignment_2.eContents().get(0);
 		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//Form:
-		//	Atom ':-' right=Formula '.';
+		//Conditions:
+		//	Cond=Atom ':-' right=Formula '.';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Atom ':-' right=Formula '.'
+		//Cond=Atom ':-' right=Formula '.'
 		public Group getGroup() { return cGroup; }
 		
+		//Cond=Atom
+		public Assignment getCondAssignment_0() { return cCondAssignment_0; }
+		
 		//Atom
-		public RuleCall getAtomParserRuleCall_0() { return cAtomParserRuleCall_0; }
+		public RuleCall getCondAtomParserRuleCall_0_0() { return cCondAtomParserRuleCall_0_0; }
 		
 		//':-'
 		public Keyword getColonHyphenMinusKeyword_1() { return cColonHyphenMinusKeyword_1; }
@@ -168,18 +172,22 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	public class AssertionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Assertion");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cFormulaParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cTruthAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTruthFormulaParserRuleCall_0_0 = (RuleCall)cTruthAssignment_0.eContents().get(0);
 		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		//Assertion:
-		//	Formula '.';
+		//	Truth=Formula '.';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Formula '.'
+		//Truth=Formula '.'
 		public Group getGroup() { return cGroup; }
 		
+		//Truth=Formula
+		public Assignment getTruthAssignment_0() { return cTruthAssignment_0; }
+		
 		//Formula
-		public RuleCall getFormulaParserRuleCall_0() { return cFormulaParserRuleCall_0; }
+		public RuleCall getTruthFormulaParserRuleCall_0_0() { return cTruthFormulaParserRuleCall_0_0; }
 		
 		//'.'
 		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
@@ -222,21 +230,25 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	public class AtomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mde.Datalog.Atom");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cParameterPredParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameParameterPredParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cListAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cListParamListParserRuleCall_2_0 = (RuleCall)cListAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Atom:
-		//	ParameterPred '(' list=ParamList ')';
+		//	name=ParameterPred '(' list=ParamList ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ParameterPred '(' list=ParamList ')'
+		//name=ParameterPred '(' list=ParamList ')'
 		public Group getGroup() { return cGroup; }
 		
+		//name=ParameterPred
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
 		//ParameterPred
-		public RuleCall getParameterPredParserRuleCall_0() { return cParameterPredParserRuleCall_0; }
+		public RuleCall getNameParameterPredParserRuleCall_0_0() { return cNameParameterPredParserRuleCall_0_0; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
@@ -357,10 +369,10 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	
 	private final ModelElements pModel;
 	private final StatementsElements pStatements;
-	private final PlusElements pPlus;
-	private final MinusElements pMinus;
-	private final CommentElements pComment;
-	private final FormElements pForm;
+	private final PlusSignElements pPlusSign;
+	private final MinusSignElements pMinusSign;
+	private final ComElements pCom;
+	private final ConditionsElements pConditions;
 	private final AssertionElements pAssertion;
 	private final FormulaElements pFormula;
 	private final AtomElements pAtom;
@@ -383,10 +395,10 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pStatements = new StatementsElements();
-		this.pPlus = new PlusElements();
-		this.pMinus = new MinusElements();
-		this.pComment = new CommentElements();
-		this.pForm = new FormElements();
+		this.pPlusSign = new PlusSignElements();
+		this.pMinusSign = new MinusSignElements();
+		this.pCom = new ComElements();
+		this.pConditions = new ConditionsElements();
 		this.pAssertion = new AssertionElements();
 		this.pFormula = new FormulaElements();
 		this.pAtom = new AtomElements();
@@ -437,7 +449,7 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 	
 	//Statements:
-	//	{Statements} Plus | {Statements} Minus | Form | Assertion | Comment;
+	//	{Statements} PlusSign | {Statements} MinusSign | Conditions | Assertion | {Statements} Com;
 	public StatementsElements getStatementsAccess() {
 		return pStatements;
 	}
@@ -446,48 +458,48 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getStatementsAccess().getRule();
 	}
 	
-	//Plus:
+	//PlusSign:
 	//	'+';
-	public PlusElements getPlusAccess() {
-		return pPlus;
+	public PlusSignElements getPlusSignAccess() {
+		return pPlusSign;
 	}
 	
-	public ParserRule getPlusRule() {
-		return getPlusAccess().getRule();
+	public ParserRule getPlusSignRule() {
+		return getPlusSignAccess().getRule();
 	}
 	
-	//Minus:
+	//MinusSign:
 	//	'-';
-	public MinusElements getMinusAccess() {
-		return pMinus;
+	public MinusSignElements getMinusSignAccess() {
+		return pMinusSign;
 	}
 	
-	public ParserRule getMinusRule() {
-		return getMinusAccess().getRule();
+	public ParserRule getMinusSignRule() {
+		return getMinusSignAccess().getRule();
 	}
 	
-	//Comment:
-	//	'/*' text=ID '*/';
-	public CommentElements getCommentAccess() {
-		return pComment;
+	//Com:
+	//	'/*' -> '*/';
+	public ComElements getComAccess() {
+		return pCom;
 	}
 	
-	public ParserRule getCommentRule() {
-		return getCommentAccess().getRule();
+	public ParserRule getComRule() {
+		return getComAccess().getRule();
 	}
 	
-	//Form:
-	//	Atom ':-' right=Formula '.';
-	public FormElements getFormAccess() {
-		return pForm;
+	//Conditions:
+	//	Cond=Atom ':-' right=Formula '.';
+	public ConditionsElements getConditionsAccess() {
+		return pConditions;
 	}
 	
-	public ParserRule getFormRule() {
-		return getFormAccess().getRule();
+	public ParserRule getConditionsRule() {
+		return getConditionsAccess().getRule();
 	}
 	
 	//Assertion:
-	//	Formula '.';
+	//	Truth=Formula '.';
 	public AssertionElements getAssertionAccess() {
 		return pAssertion;
 	}
@@ -507,7 +519,7 @@ public class DatalogGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 	
 	//Atom:
-	//	ParameterPred '(' list=ParamList ')';
+	//	name=ParameterPred '(' list=ParamList ')';
 	public AtomElements getAtomAccess() {
 		return pAtom;
 	}

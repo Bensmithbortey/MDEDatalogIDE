@@ -7,6 +7,9 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.xtext.mde.datalog.Assertion
+import org.xtext.mde.datalog.Conditions
+import org.xtext.mde.datalog.Model
 
 /**
  * Generates code from your model files on save.
@@ -16,10 +19,50 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class DatalogGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+		val model = resource.contents.head as Model
+		
+		fsa.generateFile(deriveTargetFileNameFor(model, resource), model.generate)
+		
+//		val className = resource.deriveClassName
+//		
+//		fsa.generateF	ile(className, model.doGenerateClass())
 	}
+	
+//	def doGenerateClass(Model model) '''
+//		 +
+//		male(grandpaSmith).  male(mrSmith).  male(peterSmith).
+//		male(johnJones).  male(babyJones).
+//		female(mrsSmith).  female(maryJones).  female(sallyWilkinson).
+//		father(grandpaSmith,mrSmith).
+//		husband_wife(mrSmith,mrsSmith).
+//		father(mrSmith,peterSmith).  mother(mrsSmith,peterSmith).
+//		father(mrSmith,maryJones).  mother(mrsSmith,maryJones).
+//		husband_wife(johnJones,maryJones).
+//		father(johnJones,babyJones).  mother(maryJones,babyJones).
+//		loves(peterSmith,sallyWilkinson).
+//		
+//		married(H,W) :- husband_wife(H,W).  married(W,H) :- husband_wife(H,W).
+//		loves(X,Y) :- married(X,Y).
+//		parent(X,Y) :- father(X,Y).  parent(X,Y) :- mother(X,Y).
+//		
+//		 -
+//	'''
+	
+//	def deriveClassName(Resource resource) {
+//		val origFilename = resource.URI.lastSegment
+//		
+//		origFilename.substring(0, origFilename.indexOf('.')).toFirstUpper + 'Datalog'
+//	}
+	
+	def generate(Model model) '''
+		Model contains:
+		
+		- «model.eAllContents.filter(Conditions).size» Conditions
+		- «model.eAllContents.filter(Assertion).size» Assertions
+	'''
+	
+	def deriveTargetFileNameFor(Model test, Resource resource) {
+		resource.URI.appendFileExtension('txt').lastSegment
+	}
+	
 }
