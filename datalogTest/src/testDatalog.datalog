@@ -1,0 +1,20 @@
++
+male(grandpaSmith).  male(mrSmith).  male(peterSmith).
+male(johnJones).  male(babyJones).
+female(mrsSmith).  female(maryJones).  female(sallyWilkinson).
+father(grandpaSmith,mrSmith).
+husband_wife(mrSmith,mrsSmith).
+father(mrSmith,peterSmith).  mother(mrsSmith,peterSmith).
+father(mrSmith,maryJones).  mother(mrsSmith,maryJones).
+husband_wife(johnJones,maryJones).
+father(johnJones,babyJones).  mother(maryJones,babyJones).
+loves(peterSmith,sallyWilkinson).
+
+parent(X,Y) :- father(X,Y).  parent(X,Y) :- mother(X,Y).
+
+-
+male(mrSmith).
+male(mrsSmith).
+female(X).
+loves(X,johnJones).
+loves(X,Y).
