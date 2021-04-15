@@ -1,0 +1,78 @@
+/*XPECT_SETUP datalog.xpect.XpectTests END_SETUP*/
+/* 
+XPECT generated file test1.datalog.xt.txt ---
+Model contains:
+
+- 2 Conditions
+- 18 Assertions Plus
+- 5 Assertions Minus  
+---  
+
+XPECT generated file TestDatalog.java ---
+import runtime.datalog;
+
+public class DatalogTest {
+
+	public static void main(String[] args) {
+		
+		Datalog d = new Datalog() {
+			@Override
+			public void run() {
+				addSingleTruthToList("male", "grandpaSmith");
+				addSingleTruthToList("male", "mrSmith");
+				addSingleTruthToList("male", "peterSmith");
+				addSingleTruthToList("male", "johnJones");
+				addSingleTruthToList("male", "babyJones");
+				
+				addSingleTruthToList("female", "mrsSmith");
+				addSingleTruthToList("female", "maryJones");
+				addSingleTruthToList("female", "sallyWilkinson");
+				
+				addDoubleTruthToList("father", "grandpaSmith", "mrSmith");
+				addDoubleTruthToList("father", "mrSmith", "peterSmith");
+				addDoubleTruthToList("father", "mrSmith", "maryJones");
+				addDoubleTruthToList("father", "johnJones", "babyJones");
+				
+				addDoubleTruthToList("husband_wife", "mrSmith", "mrsSmith");
+				addDoubleTruthToList("husband_wife", "johnJones", "maryJones");
+				
+				addDoubleTruthToList("mother", "mrsSmith", "peterSmith");
+				addDoubleTruthToList("mother", "mrsSmith", "maryJones");
+				addDoubleTruthToList("mother", "maryJones", "babyJones");
+				
+				addDoubleTruthToList("loves", "peterSmith", "sallyWilkinson");
+
+				System.out.println(getSimpleTruth("male", "mrSmith"));
+				System.out.println(getSimpleTruth("male", "mrsSmith"));
+				System.out.println(getListTruth("female"));
+				System.out.println(getMapTruth("loves", null, "johnJones"));
+				System.out.println(getMapTruth("loves", null, null));
+			}
+		};
+		d.run();
+
+	}
+
+}
+---
+ */
++
+male(grandpaSmith).  male(mrSmith).  male(peterSmith).
+male(johnJones).  male(babyJones).
+female(mrsSmith).  female(maryJones).  female(sallyWilkinson).
+father(grandpaSmith,mrSmith).
+husband_wife(mrSmith,mrsSmith).
+father(mrSmith,peterSmith).  mother(mrsSmith,peterSmith).
+father(mrSmith,maryJones).  mother(mrsSmith,maryJones).
+husband_wife(johnJones,maryJones).
+father(johnJones,babyJones).  mother(maryJones,babyJones).
+loves(peterSmith,sallyWilkinson).
+
+parent(X,Y) :- father(X,Y).  parent(X,Y) :- mother(X,Y).
+
+-
+male(mrSmith).
+male(mrsSmith).
+female(X).
+loves(X,johnJones).
+loves(X,Y).

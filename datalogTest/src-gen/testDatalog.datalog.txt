@@ -1,0 +1,5 @@
+Model contains:
+
+- 2 Conditions
+- 18 Assertions Plus
+- 5 Assertions Minus

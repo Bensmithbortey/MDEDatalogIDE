@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xpect
+Bundle-SymbolicName: datalog.xpect
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: datalog.xpect
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.xtext.datalog;bundle-version="1.0.0",
+ org.xtext.datalog.ui;bundle-version="1.0.0",
+ org.eclipse.xpect.xtext.lib;bundle-version="0.2.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.24.0"
